@@ -1,0 +1,30 @@
+{
+	"title": "Winds's gitbook",
+	"author": "Winds<xwinds@gmail.com>",
+	"description": "个人搜集整理的技术资料",
+	"language": "zh-hans",
+	"gitbook": ">=3.2.2",
+	"root": ".",
+	"links": {
+		"sidebar": {
+			"Home": "https://server.xwinds.top"
+		}
+	},
+	"styles": {
+		"website": "styles/website.css",
+		"ebook": "styles/ebook.css",
+		"pdf": "styles/pdf.css",
+		"mobi": "styles/mobi.css",
+		"epub": "styles/epub.css"
+	},
+	"plugins": [
+		"-search"
+	],
+	"pluginsConfig": {
+		"fontSettings": {
+			"theme": "night",
+			"family": "sans",
+			"size": "1"
+		}
+	}
+}
