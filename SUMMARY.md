@@ -8,7 +8,7 @@
   * [利用脚本批量到出表结构和数据](SQLServer/利用脚本批量到出表结构和数据.md)
   * [导出表注释](SQLServer/导出表注释.md)
 * [Linux](Linux/README.md)
-  * [Ubuntu](Ubuntu/README.md)
+  * [Ubuntu](Linux/Ubuntu/README.md)
     * [Ubuntu16.04-Server-安装后的基本设置](/Linux/Ubuntu/Ubuntu16.04-Server-安装后的基本设置.md)
     * [Ubuntu-Windows双系统时间同步](/Linux/Ubuntu/Ubuntu-Windows双系统时间同步.md)
   * [快速配置zsh](Linux/快速配置zsh.md)
