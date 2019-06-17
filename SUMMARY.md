@@ -20,4 +20,5 @@
     * [Docker快速部署v2ray翻墙](科学上网/Docker快速部署v2ray翻墙.md)
 * [虚拟化](虚拟化/README.md)
     * [PVE安装后要做的](虚拟化/PVE安装后要做的.md)
-
+* [硬件](硬件/README.md)
+    * [LSi 9211-8i 刷IT模式](硬件/LSi 9211-8i 刷IT模式.md)
