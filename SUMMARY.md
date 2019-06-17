@@ -15,6 +15,7 @@
     * [例子VIM配置文件](Linux/例子VIM配置文件.md)
     * [配置VIM使用molokai配色](Linux/配置VIM使用molokai配色.md)
     * [debian9安装gitbook](Linux/debian9安装gitbook.md)
+    * [Windows下用Xming远程开启Linux图形界面程序](Linux/Windows下用Xming远程开启Linux图形界面程序.md)
 * [科学上网](科学上网/README.md)
     * [搬瓦工VPS使用Docker部署Shadowsocks和Kcptun](科学上网/搬瓦工VPS使用Docker部署Shadowsocks和Kcptun.md)
     * [Docker快速部署v2ray翻墙](科学上网/Docker快速部署v2ray翻墙.md)
