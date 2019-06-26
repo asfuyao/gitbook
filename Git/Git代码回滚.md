@@ -13,7 +13,7 @@ tags:
 ---
 
 
->并不适合阅读的个人文档。
+>Git相关
 
 # **git revert** 和 **git reset** 的区别
  先看图：
