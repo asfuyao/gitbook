@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Git 代码回滚
+title:      Git代码回滚
 subtitle:   回滚代码的正确姿势
 date:       2017-02-16
 author:     BY
@@ -13,7 +13,7 @@ tags:
 ---
 
 
->并不适合阅读的个人文档。
+>Git相关
 
 # **git revert** 和 **git reset** 的区别
  先看图：
