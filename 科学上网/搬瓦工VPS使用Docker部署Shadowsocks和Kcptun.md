@@ -1,4 +1,4 @@
----
+﻿---
 layout:     post
 title:      搬瓦工VPS使用Docker部署Shadowsocks和Kcptun
 subtitle:   翻墙
@@ -13,6 +13,22 @@ tags:
 ---
 
 >快速部署翻墙服务
+
+<!-- TOC -->
+
+- [服务器安装Ubuntu16.04_x64](#服务器安装ubuntu1604_x64)
+    - [1. 添加用户](#1-添加用户)
+    - [2. 给用户管理员权限](#2-给用户管理员权限)
+    - [3. 更新系统](#3-更新系统)
+    - [4. 使用Docker官方脚本安装docker ce](#4-使用docker官方脚本安装docker-ce)
+    - [5. 把当前用户添加到docker组](#5-把当前用户添加到docker组)
+    - [6. 设置docker开机自动运行](#6-设置docker开机自动运行)
+    - [7. 注销重新登录，获取shadowsocks和kcptun官方镜像](#7-注销重新登录获取shadowsocks和kcptun官方镜像)
+    - [8. 启动shadowsocks（默认加密方法是aes-256-gcm）](#8-启动shadowsocks默认加密方法是aes-256-gcm)
+    - [9. 启动kcptun](#9-启动kcptun)
+    - [10. 客户端下载地址](#10-客户端下载地址)
+
+<!-- /TOC -->
 
 # 服务器安装Ubuntu16.04_x64
 
