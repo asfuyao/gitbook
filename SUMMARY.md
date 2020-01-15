@@ -7,6 +7,7 @@
     * [系统维护脚本](SQLServer/系统维护脚本.md)
     * [利用脚本批量到出表结构和数据](SQLServer/利用脚本批量到出表结构和数据.md)
     * [导出表注释](SQLServer/导出表注释.md)
+    * [SqlServer.VS.Oracle](SQLServer/SqlServer.VS.Oracle.md)
 * [Linux](Linux/README.md)
     * [Ubuntu](Linux/Ubuntu/README.md)
         * [Ubuntu16.04-Server-安装后的基本设置](Linux/Ubuntu/Ubuntu16.04-Server-安装后的基本设置.md)
