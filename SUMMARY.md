@@ -8,6 +8,8 @@
         * [系统维护脚本](数据库/SQLServer/系统维护脚本.md)
         * [利用脚本批量到出表结构和数据](SQLServer/利用脚本批量到出表结构和数据.md)
         * [导出表注释](数据库/SQLServer/导出表注释.md)
+    * [Oracle](数据库/Oracle/README.md)
+        * [基础知识整理](数据库/Oracle/基础知识整理.md)
     * [SqlServer.VS.Oracle](数据库/SqlServer.VS.Oracle.md)
 * [开发工具](开发工具/README.md)
     * [VSCode技巧](开发工具/VSCode技巧.md)

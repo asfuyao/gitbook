@@ -16,10 +16,11 @@ tags:
 
 <!-- TOC -->
 
-- [1. 设置](#1-%e8%ae%be%e7%bd%ae)
-  - [1.1. 绿化](#11-%e7%bb%bf%e5%8c%96)
-- [2. 插件](#2-%e6%8f%92%e4%bb%b6)
-  - [2.1. Markdown TOC](#21-markdown-toc)
+- [1. 设置](#1-设置)
+    - [1.1. 绿化](#11-绿化)
+- [2. 插件](#2-插件)
+    - [2.1. Markdown TOC](#21-markdown-toc)
+    - [2.2. Markdown ALL in One](#22-markdown-all-in-one)
 
 <!-- /TOC -->
 
@@ -48,3 +49,9 @@ tags:
 windows | \n\r
 unix | \n
 mac | \r
+
+## 2.2. Markdown ALL in One
+
+如果装了Markdown ALL in One 和 Markdown TOC 这两个插件，插入的中文目录在保存时会乱码，这个是Markdown ALL in One造成的，需要修改配置
+* 点击VSCode左下角的Manage按钮，进入Settings
+* 找到Update On Save这个配置，取消Auto update on save设置
