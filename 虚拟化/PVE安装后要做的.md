@@ -14,7 +14,26 @@ tags:
 
 >Linux 知识库
 
-# 1. 修改root的bash设置，去掉下面内容的注释
+<!-- TOC -->
+
+- [1. 修改root的bash设置](#1-修改root的bash设置)
+- [2. 修改源设置，去掉企业订阅](#2-修改源设置去掉企业订阅)
+- [3. 增加PVE源并更新](#3-增加pve源并更新)
+- [4. 打开Pci passthrough](#4-打开pci-passthrough)
+    - [1) 修改启动设置](#1-修改启动设置)
+    - [2）增加模块](#2增加模块)
+- [5. 移除登录时的未订阅弹窗提示](#5-移除登录时的未订阅弹窗提示)
+- [6. 调整LVM分区（可选）](#6-调整lvm分区可选)
+    - [可选操作1](#可选操作1)
+    - [可选操作2](#可选操作2)
+- [7. 在安装时选择控制磁盘空间大小](#7-在安装时选择控制磁盘空间大小)
+- [8. 使用zfs文件系统](#8-使用zfs文件系统)
+
+<!-- /TOC -->
+
+# 1. 修改root的bash设置
+
+去掉下面内容的注释
 
 ```shell
 cd
@@ -35,13 +54,16 @@ vi .bashrc
  alias mv='mv -i'
 ```
 
-# 2. 修改源设置，去掉企业订阅，注释掉下面配置文件的内容
+# 2. 修改源设置，去掉企业订阅
+
+注释掉下面配置文件的内容
 
 ```sh
 vi /etc/apt/sources.list.d/pve-enterprise.list
 ```
 
-# 3. 增加PVE源并更新，如有内核更新需重启
+# 3. 增加PVE源并更新
+如有内核更新需重启
 
 ```sh
 echo "deb http://download.proxmox.com/debian/pve stretch pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
@@ -51,22 +73,37 @@ apt update -y
 apt dist-upgrade -y
 ```
 
-# 4. 打开Pci passthrough，[官方说明网址](https://pve.proxmox.com/wiki/Pci_passthrough)
+# 4. 打开Pci passthrough
+
+* [官方说明网址](https://pve.proxmox.com/wiki/Pci_passthrough)
 
 * 前提是CPU支持，pve官网说只有部分i7和大部分志强E3、E5支持
 
 ## 1) 修改启动设置
 
-### 编辑grub：`vi /etc/default/grub`
-### 修改这行：`GRUB_CMDLINE_LINUX_DEFAULT="quiet"`
-### 改为：`GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on"`
-### 更新引导记录：`update-grub`
+编辑grub
 
-## 2） 增加模块
+`vi /etc/default/grub`
 
-### 修改配置文件：`vi /etc/modules`
+修改这行
 
-### 添加下面内容：
+`GRUB_CMDLINE_LINUX_DEFAULT="quiet"`
+
+改为
+
+`GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on"`
+
+更新引导记录
+
+`update-grub`
+
+## 2）增加模块
+
+修改配置文件
+
+`vi /etc/modules`
+
+添加下面内容：
 
 ```
 vfio
@@ -83,13 +120,17 @@ vfio_virqfd
 * 找到`if (data.status !== ‘Active’) {`，将其修改为`if (false) {`
 * 也可以在shell下通过一个命令来完成这个修改
 
-## 5.1版`/usr/share/pve-manager/js/pvemanagerlib.js`
+5.1版
+
+`/usr/share/pve-manager/js/pvemanagerlib.js`
 
 ```shell
 sed -i_orig "s/data.status !== 'Active'/false/g" /usr/share/pve-manager/js/pvemanagerlib.js && systemctl restart pveproxy.service
 ```
 
-## 5.3版`/usr/share/javascript/proxmox–widget–toolkit/proxmoxlib.js`
+5.3版
+
+`/usr/share/javascript/proxmox–widget–toolkit/proxmoxlib.js`
 
 ```
 sed -i_orig "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
@@ -101,7 +142,9 @@ sed -i_orig "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-w
 * 安装系统时会自动创建LVM和LVM-Thin，其中LVM是root分区通常占用整个磁盘的10%左右，剩余部分除了分给swap分区（大小和内存相等）都给了LVM-Thin
 * 可以通过LVM管理命令将LVM-Thin容量都分给LVM，或删除LVM-Thin重新创建新的LVM分区
 
-## 可选操作1：将LVM-Thin分区删除，容量分给LVM
+## 可选操作1
+
+将LVM-Thin分区删除，容量分给LVM
 
 ```shell
 echo 删除LVM-Thin分区，该分区的默认路径是/dev/pve/data，可通过lvdisplay命令查看
@@ -117,7 +160,10 @@ echo 扩展文件系统
 resize2fs -p /dev/pve/root
 ```
 
-## 可选操作2：将LVM-Thin分区删除，创建新的LVM
+## 可选操作2
+
+将LVM-Thin分区删除，创建新的LVM
+
 * 格式化后返回web控制台，在Datacenter节点的Storage菜单中添加新的Directory，Directory填/mnt/data，ID随便填，保持后就可以在左侧树菜单中看到新加的存储
 ```shell
 echo 删除LVM-Thin分区，该分区的默认路径是/dev/pve/data，可通过lvdisplay命令查看
@@ -143,11 +189,13 @@ echo /dev/pve/data /mnt/data ext4 defaults 0 0 >> /etc/fstab
 ```
 
 # 7. 在安装时选择控制磁盘空间大小
+
 * 安装时选择hdsize，指定pve的LVM卷的总体大小，保留未分配空间
 * 未分配空间可以通过fdisk命令来创建新的分区或用LVM管理命令创建卷
 * fdisk创建的新分区可以格式化为ext4、xfs、btrfs，并挂接到系统中，方法查考“可选操作2”中的格式化之后的步骤
 
 # 8. 使用zfs文件系统
+
 * fdisk创建的新分区也可以创建zfs系统，使用命令：`zpool create -f -o ashift=12 存储池名 /dev/sda4`
 * 查看zfs存储池：`zpool list`
 * 设置zfs压缩：`zfs set compression=on 存储池名`
