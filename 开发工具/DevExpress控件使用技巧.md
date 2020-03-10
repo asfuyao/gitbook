@@ -80,20 +80,23 @@ private void GridPrint()
     string _PrintFooterRight = "打印时间：" + PlatCommon.Common.PublicFunction.GetSysDate();
 
     PageHeaderFooter phf = link.PageHeaderFooter as PageHeaderFooter;
-
+    //打印页头
     phf.Header.Content.Clear();
     phf.Header.Content.AddRange(new string[] { _PrintHeaderLeft, "", _PrintHeaderRight });
     phf.Header.Font = new Font("宋体", 11, FontStyle.Bold);
     phf.Header.LineAlignment = BrickAlignment.Center;
 
-    link.CreateMarginalHeaderArea += new CreateAreaEventHandler(link_CreateMarginalHeaderArea);//打印报表名
+    //打印页头的另一个方法
+    link.CreateMarginalHeaderArea += new CreateAreaEventHandler(link_CreateMarginalHeaderArea);
 
+    //打印页尾
     phf.Footer.Content.Clear();
     phf.Footer.Content.AddRange(new string[] { _PrintFooterLeft, "", _PrintFooterRight });
     phf.Footer.Font = new Font("宋体", 10, FontStyle.Bold);
     phf.Footer.LineAlignment = BrickAlignment.Center;
 
-    link.CreateMarginalFooterArea += new CreateAreaEventHandler(link_CreateMarginalFooterArea);//打印页码
+    //打印页尾的另一个方法
+    link.CreateMarginalFooterArea += new CreateAreaEventHandler(link_CreateMarginalFooterArea);
 
     link.CreateDocument(); //建立文档  
     link.ShowPreviewDialog();
