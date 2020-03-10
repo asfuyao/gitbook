@@ -4,7 +4,11 @@
     - [显示小计项目](#显示小计项目)
     - [GridView单元格内容换行](#gridview单元格内容换行)
     - [GridControl内容打印](#gridcontrol内容打印)
+    - [合并单元格](#合并单元格)
+    - [隔行显示不同颜色](#隔行显示不同颜色)
     - [GridView自动列宽](#gridview自动列宽)
+    - [显示格式说明](#显示格式说明)
+        - [数字](#数字)
 
 <!-- /TOC -->
 
@@ -120,8 +124,34 @@ void link_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
 }
 ```
 
+## 合并单元格
+
+```csharp
+gridView.OptionsView.AllowCellMerge = true; //设置允许合并单元格，整体控制选项
+gridView.Columns["列名"].OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False; //设置不想合并的具体列
+```
+
+## 隔行显示不同颜色
+
+```csharp
+gridView.OptionsView.EnableAppearanceEvenRow = true;  //允许偶数行显示背景色
+gridView.OptionsView.EnableAppearanceOddRow = true;  //允许奇数行显示背景色
+```
+
 ## GridView自动列宽
 
 ```csharp
 gridview1.BestFitColumns();
 ```
+
+## 显示格式说明
+
+### 数字
+
+字母后数字表示保留几位小数，无数字默认为2
+
+* f,f0,f1,f2,f3，浮点数
+* n,n0,n1,n2,n3，小数
+* d，整数
+* P,P0,P1,P2,P3，百分比，直接在数字后面添加百分号
+* p,p0,p1,p2,p3，百分比，值为小数，乘100后添加百分号
