@@ -14,6 +14,7 @@
 * [开发工具](开发工具/README.md)
     * [VSCode技巧](开发工具/VSCode技巧.md)
     * [使用Choco快速配置开发环境](开发工具/使用Choco快速配置开发环境.md)
+    * [DevExpress控件使用技巧](开发工具/DevExpress控件使用技巧.md)
 * [Linux](Linux/README.md)
     * [Ubuntu](Linux/Ubuntu/README.md)
         * [Ubuntu16.04-Server-安装后的基本设置](Linux/Ubuntu/Ubuntu16.04-Server-安装后的基本设置.md)
