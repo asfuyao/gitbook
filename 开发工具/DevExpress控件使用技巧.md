@@ -1,20 +1,27 @@
 <!-- TOC -->
 
-- [GridControl](#gridcontrol)
-    - [显示小计项目](#显示小计项目)
-    - [GridView单元格内容换行](#gridview单元格内容换行)
-    - [GridControl内容打印](#gridcontrol内容打印)
-    - [合并单元格](#合并单元格)
-    - [隔行显示不同颜色](#隔行显示不同颜色)
-    - [GridView自动列宽](#gridview自动列宽)
-    - [显示格式说明](#显示格式说明)
-        - [数字](#数字)
+- [1. GridControl](#1-gridcontrol)
+    - [1.1. 显示小计项目](#11-显示小计项目)
+    - [1.2. GridView单元格内容换行](#12-gridview单元格内容换行)
+    - [1.3. GridControl内容打印](#13-gridcontrol内容打印)
+    - [1.4. 合并单元格](#14-合并单元格)
+    - [1.5. 隔行显示不同颜色](#15-隔行显示不同颜色)
+    - [1.6. GridView自动列宽](#16-gridview自动列宽)
+    - [1.7. 显示横线滚动条](#17-显示横线滚动条)
+    - [1.8. 复制单元格内容到剪贴板](#18-复制单元格内容到剪贴板)
+    - [1.9. 显示过滤面板](#19-显示过滤面板)
+    - [1.10. 显示行号](#110-显示行号)
+    - [1.11. 在GridView中增加行号](#111-在gridview中增加行号)
+    - [1.12. BarManager中交点漂移问题](#112-barmanager中交点漂移问题)
+    - [1.13. 显示格式说明](#113-显示格式说明)
+        - [1.13.1. 数字](#1131-数字)
+        - [1.13.2. 日期](#1132-日期)
 
 <!-- /TOC -->
 
-# GridControl
+# 1. GridControl
 
-## 显示小计项目
+## 1.1. 显示小计项目
 
 ```csharp
 //可放到FormLoad事件中执行
@@ -46,7 +53,7 @@ if (gridView != null)
 }
 ```
 
-## GridView单元格内容换行
+## 1.2. GridView单元格内容换行
 
 ```csharp
 {
@@ -62,7 +69,7 @@ if (gridView != null)
 
 
 
-## GridControl内容打印
+## 1.3. GridControl内容打印
 
 ```csharp
 private void GridPrint()
@@ -124,34 +131,101 @@ void link_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
 }
 ```
 
-## 合并单元格
+## 1.4. 合并单元格
 
 ```csharp
 gridView.OptionsView.AllowCellMerge = true; //设置允许合并单元格，整体控制选项
 gridView.Columns["列名"].OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False; //设置不想合并的具体列
 ```
 
-## 隔行显示不同颜色
+## 1.5. 隔行显示不同颜色
 
 ```csharp
 gridView.OptionsView.EnableAppearanceEvenRow = true;  //允许偶数行显示背景色
 gridView.OptionsView.EnableAppearanceOddRow = true;  //允许奇数行显示背景色
 ```
 
-## GridView自动列宽
+## 1.6. GridView自动列宽
 
 ```csharp
 gridview1.BestFitColumns();
 ```
 
-## 显示格式说明
+## 1.7. 显示横线滚动条
 
-### 数字
+```csharp
+//由于设置了自动列宽因此不会出现滚动条，将自动列宽设置为false即可
+gridView1.OptionsView.ColumnAutoWidth = false;
+```
+
+## 1.8. 复制单元格内容到剪贴板
+
+```csharp
+private void gridView1_KeyDown(object sender, KeyEventArgs e)
+{
+    if (e.Control & e.KeyCode == Keys.C)
+    {
+        Clipboard.SetDataObject(gridView1.GetFocusedRowCellValue(gridView1.FocusedColumn));
+        e.Handled = true;
+    }
+}
+```
+
+## 1.9. 显示过滤面板
+
+```csharp
+//显示过滤面板
+gridView.OptionsView.ShowAutoFilterRow = true;
+//指定列的筛选条件
+gridView.Columns["列名"].OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Equals;
+```
+
+## 1.10. 显示行号
+
+```csharp
+//在FormLoad中设置行号宽
+gridView1.IndicatorWidth = 50;
+
+//增加事件
+private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+{
+    if (e.Info.IsRowIndicator && e.RowHandle >= 0)
+    {
+        e.Info.DisplayText = (e.RowHandle + 1).ToString();
+    }
+}
+```
+
+## 1.11. 在GridView中增加行号
+
+```csharp
+//假设第一列为序号列，可在sql语句中增加一个值为空字符串的列，然后在数据填充后用下面语句增加行号
+for (int i = 0; i < gridView1.RowCount; i++)
+{
+    gridView1.SetRowCellValue(i, gridView1.Columns[0], (i + 1).ToString());
+}
+```
+
+## 1.12. BarManager中交点漂移问题
+
+在BarManger中的按钮前面添加RadioGroup控件后点击选择发生焦点漂移的问题，焦点飘到后面的按钮上了，解决办法是把RadioGroup后面的按钮设置为Begin a Group。
+目前测试发现这个办法不一定好用，原因不明
+
+## 1.13. 显示格式说明
+
+### 1.13.1. 数字
 
 字母后数字表示保留几位小数，无数字默认为2
 
 * f,f0,f1,f2,f3，浮点数
-* n,n0,n1,n2,n3，小数
+* n,n0,n1,n2,n3，含千分位的浮点数
 * d，整数
 * P,P0,P1,P2,P3，百分比，直接在数字后面添加百分号
 * p,p0,p1,p2,p3，百分比，值为小数，乘100后添加百分号
+
+### 1.13.2. 日期
+
+* G yyyy/MM/dd hh:mm:ss
+* g yyyy/MM/dd hh:mm
+* T hh:mm:ss
+* t hh:mm
