@@ -24,6 +24,8 @@
     * [配置VIM使用molokai配色](Linux/配置VIM使用molokai配色.md)
     * [debian9安装gitbook](Linux/debian9安装gitbook.md)
     * [Windows下用Xming远程开启Linux图形界面程序](Linux/Windows下用Xming远程开启Linux图形界面程序.md)
+* [Windows](Windows/README.md)
+    * [修改网卡IP地址的脚本](Windows/修改网卡IP地址的脚本.md)
 * [虚拟化](虚拟化/README.md)
     * [PVE安装后要做的](虚拟化/PVE安装后要做的.md)
 * [硬件](硬件/README.md)
