@@ -608,3 +608,15 @@ EXCEPTION
         ROLLBACK;
 END deletearticlesubmodel;
 ```
+
+# 其它
+
+## 取前几条记录
+
+```sql
+--s
+select top 100 * from TableName
+
+--o
+select * from TableName where rownum<=10
+```
