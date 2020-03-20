@@ -79,6 +79,9 @@ tags:
     - [3.1. 多表连接查询](#31-多表连接查询)
     - [3.2. 更新数据](#32-更新数据)
     - [3.3. 删除数据](#33-删除数据)
+- [其它](#其它)
+    - [取前几条记录](#取前几条记录)
+    - [游标](#游标)
 
 <!-- /TOC -->
 
@@ -619,4 +622,53 @@ select top 100 * from TableName
 
 --o
 select * from TableName where rownum<=10
+```
+
+## 游标
+
+```sql
+--s
+--声明变量
+DECLARE @DevId INT; --设备ID
+DECLARE @DevName NVARCHAR(200);
+
+--设备名称
+--声明游标
+DECLARE c_Dev CURSOR FOR SELECT DevId, DevName FROM dbo.Dev;
+
+--打开游标，获取首行数据给变量
+OPEN c_Dev;
+
+FETCH NEXT FROM c_Dev
+INTO @DevId, @DevName;
+
+--从全局变量获取游标状态，0表示已到表尾
+WHILE @@FETCH_STATUS = 0
+BEGIN
+  --处理过程
+  SELECT @DevId, @DevName;
+
+  FETCH NEXT FROM c_Dev
+  INTO @DevId, @DevName;
+END;
+
+--关闭游标
+CLOSE c_Dev;
+--释放游标资源
+DEALLOCATE c_Dev;
+
+--o
+DECLARE
+  --定义游标
+  CURSOR C_JOB IS
+    SELECT DRUG_CODE, DRUG_NAME FROM DRUG_DICT WHERE ROWNUM <= 10;
+  --定义游标变量
+  C_ROW C_JOB%ROWTYPE;
+
+BEGIN
+  --循环游标
+  FOR C_ROW IN C_JOB LOOP
+    DBMS_OUTPUT.PUT_LINE(C_ROW.DRUG_CODE || '  ' || C_ROW.DRUG_NAME);
+  END LOOP;
+END;
 ```
