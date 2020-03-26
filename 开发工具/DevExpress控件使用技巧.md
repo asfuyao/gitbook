@@ -16,6 +16,7 @@
     - [1.13. 显示格式说明](#113-显示格式说明)
         - [1.13.1. 数字](#1131-数字)
         - [1.13.2. 日期](#1132-日期)
+        - [1.13.3. 格式设置](#1133-格式设置)
 
 <!-- /TOC -->
 
@@ -186,8 +187,11 @@ gridView.Columns["列名"].OptionsFilter.AutoFilterCondition = DevExpress.XtraGr
 //在FormLoad中设置行号宽
 gridView1.IndicatorWidth = 50;
 
-//增加事件
-private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+//设置宽度并绑定事件
+gridView1.IndicatorWidth = 50; //设置指示兰宽度
+gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(GridViewDrawRowNumber);
+//填充序号事件
+private void GridViewDrawRowNumber(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
 {
     if (e.Info.IsRowIndicator && e.RowHandle >= 0)
     {
@@ -229,3 +233,14 @@ for (int i = 0; i < gridView1.RowCount; i++)
 * g yyyy/MM/dd hh:mm
 * T hh:mm:ss
 * t hh:mm
+
+### 1.13.3. 格式设置
+
+```csharp
+//设置列显示格式
+gridView.Columns["列名"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+gridView.Columns["列名"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+gridView.Columns["列名"].DisplayFormat.FormatString = "N2";
+//设置汇总显示格式
+gridView.Columns["列名"].SummaryItem.DisplayFormat = "{0:N2}";
+```
