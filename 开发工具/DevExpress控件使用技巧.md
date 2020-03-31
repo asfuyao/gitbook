@@ -9,6 +9,7 @@
     - [1.6. GridView自动列宽](#16-gridview自动列宽)
     - [1.7. 显示横线滚动条](#17-显示横线滚动条)
     - [1.8. 复制单元格内容到剪贴板](#18-复制单元格内容到剪贴板)
+    - [获取选择行的某列内容](#获取选择行的某列内容)
     - [1.9. 显示过滤面板](#19-显示过滤面板)
     - [1.10. 显示行号](#110-显示行号)
     - [1.11. 在GridView中增加行号](#111-在gridview中增加行号)
@@ -170,6 +171,12 @@ private void gridView1_KeyDown(object sender, KeyEventArgs e)
         e.Handled = true;
     }
 }
+```
+
+## 获取选择行的某列内容
+
+```csharp
+gridView1.GetFocusedRowCellValue(gridView1.Columns["列名"]).ToString()
 ```
 
 ## 1.9. 显示过滤面板
