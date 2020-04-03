@@ -9,15 +9,15 @@
     - [1.6. GridView自动列宽](#16-gridview自动列宽)
     - [1.7. 显示横线滚动条](#17-显示横线滚动条)
     - [1.8. 复制单元格内容到剪贴板](#18-复制单元格内容到剪贴板)
-    - [获取选择行的某列内容](#获取选择行的某列内容)
-    - [1.9. 显示过滤面板](#19-显示过滤面板)
-    - [1.10. 显示行号](#110-显示行号)
-    - [1.11. 在GridView中增加行号](#111-在gridview中增加行号)
-    - [1.12. BarManager中交点漂移问题](#112-barmanager中交点漂移问题)
-    - [1.13. 显示格式说明](#113-显示格式说明)
-        - [1.13.1. 数字](#1131-数字)
-        - [1.13.2. 日期](#1132-日期)
-        - [1.13.3. 格式设置](#1133-格式设置)
+    - [1.9. 获取选择行的某列内容](#19-获取选择行的某列内容)
+    - [1.10. 显示过滤面板](#110-显示过滤面板)
+    - [1.11. 显示行号](#111-显示行号)
+    - [1.12. 在GridView中增加行号](#112-在gridview中增加行号)
+    - [1.13. BarManager中交点漂移问题](#113-barmanager中交点漂移问题)
+    - [1.14. 显示格式说明](#114-显示格式说明)
+        - [1.14.1. 数字](#1141-数字)
+        - [1.14.2. 日期](#1142-日期)
+        - [1.14.3. 格式设置](#1143-格式设置)
 
 <!-- /TOC -->
 
@@ -173,13 +173,13 @@ private void gridView1_KeyDown(object sender, KeyEventArgs e)
 }
 ```
 
-## 获取选择行的某列内容
+## 1.9. 获取选择行的某列内容
 
 ```csharp
 gridView1.GetFocusedRowCellValue(gridView1.Columns["列名"]).ToString()
 ```
 
-## 1.9. 显示过滤面板
+## 1.10. 显示过滤面板
 
 ```csharp
 //显示过滤面板
@@ -188,7 +188,7 @@ gridView.OptionsView.ShowAutoFilterRow = true;
 gridView.Columns["列名"].OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Equals;
 ```
 
-## 1.10. 显示行号
+## 1.11. 显示行号
 
 ```csharp
 //在FormLoad中设置行号宽
@@ -207,7 +207,7 @@ private void GridViewDrawRowNumber(object sender, DevExpress.XtraGrid.Views.Grid
 }
 ```
 
-## 1.11. 在GridView中增加行号
+## 1.12. 在GridView中增加行号
 
 ```csharp
 //假设第一列为序号列，可在sql语句中增加一个值为空字符串的列，然后在数据填充后用下面语句增加行号
@@ -217,14 +217,14 @@ for (int i = 0; i < gridView1.RowCount; i++)
 }
 ```
 
-## 1.12. BarManager中交点漂移问题
+## 1.13. BarManager中交点漂移问题
 
 在BarManger中的按钮前面添加RadioGroup控件后点击选择发生焦点漂移的问题，焦点飘到后面的按钮上了，解决办法是把RadioGroup后面的按钮设置为Begin a Group。
 目前测试发现这个办法不一定好用，原因不明
 
-## 1.13. 显示格式说明
+## 1.14. 显示格式说明
 
-### 1.13.1. 数字
+### 1.14.1. 数字
 
 字母后数字表示保留几位小数，无数字默认为2
 
@@ -234,14 +234,14 @@ for (int i = 0; i < gridView1.RowCount; i++)
 * P,P0,P1,P2,P3，百分比，直接在数字后面添加百分号
 * p,p0,p1,p2,p3，百分比，值为小数，乘100后添加百分号
 
-### 1.13.2. 日期
+### 1.14.2. 日期
 
 * G yyyy/MM/dd hh:mm:ss
 * g yyyy/MM/dd hh:mm
 * T hh:mm:ss
 * t hh:mm
 
-### 1.13.3. 格式设置
+### 1.14.3. 格式设置
 
 ```csharp
 //设置列显示格式
