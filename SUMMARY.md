@@ -34,6 +34,7 @@
 * [Git](Git/README.md)
     * [Git指令整理](Git/Git指令整理.md)
     * [Git代码回滚](Git/Git代码回滚.md)
+    * [docker运行gogs](Git/docker运行gogs.md)
     * [使用.gitignore忽略git仓库中的文件](Git/使用.gitignore忽略git仓库中的文件.md)
     * [Linux下用git连接github](Git/Linux下用git连接github.md)
     * [cmder下git-for-windows乱码解决方案](Git/cmder下git-for-windows乱码解决方案.md)
