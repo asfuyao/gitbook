@@ -43,7 +43,7 @@ quotepath解释：
 ## 修改git全局配置设置提交和查看日志编码都是utf-8
 
 ```bash
-git config --global i18n.commitencoding utf-8 
+git config --global i18n.commitencoding utf-8
 git config --global i18n.logoutputencoding utf-8
 ```
 

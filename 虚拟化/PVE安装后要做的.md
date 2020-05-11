@@ -20,12 +20,12 @@ tags:
 - [2. 修改源设置，去掉企业订阅](#2-修改源设置去掉企业订阅)
 - [3. 增加PVE源并更新](#3-增加pve源并更新)
 - [4. 打开Pci passthrough](#4-打开pci-passthrough)
-    - [1) 修改启动设置](#1-修改启动设置)
-    - [2）增加模块](#2增加模块)
+    - [4.1. ) 修改启动设置](#41--修改启动设置)
+    - [4.2. ）增加模块](#42-增加模块)
 - [5. 移除登录时的未订阅弹窗提示](#5-移除登录时的未订阅弹窗提示)
 - [6. 调整LVM分区（可选）](#6-调整lvm分区可选)
-    - [可选操作1](#可选操作1)
-    - [可选操作2](#可选操作2)
+    - [6.1. 可选操作1](#61-可选操作1)
+    - [6.2. 可选操作2](#62-可选操作2)
 - [7. 在安装时选择控制磁盘空间大小](#7-在安装时选择控制磁盘空间大小)
 - [8. 使用zfs文件系统](#8-使用zfs文件系统)
 
@@ -53,6 +53,28 @@ vi .bashrc
  alias cp='cp -i'
  alias mv='mv -i'
 ```
+# 更换源为国内源
+
+```sh
+#163源
+deb http://mirrors.163.com/debian/ buster main non-free contrib
+deb http://mirrors.163.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.163.com/debian/ buster-backports main non-free contrib
+deb http://mirrors.163.com/debian-security/ buster/updates main non-free contrib
+
+#阿里源
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian-security buster/updates main
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+
+#添加Proxmox VE 6的镜像存储库地址
+echo "deb http://mirrors.ustc.edu.cn/proxmox/debian/pve buster pve-no-subscription " > /etc/apt/sources.list.d/pve-no-sub.list
+#修改Ceph的升级包地址
+echo "deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous buster main" > /etc/apt/sources.list.d/ceph.list
+
+
+```
 
 # 2. 修改源设置，去掉企业订阅
 
@@ -79,7 +101,7 @@ apt dist-upgrade -y
 
 * 前提是CPU支持，pve官网说只有部分i7和大部分志强E3、E5支持
 
-## 1) 修改启动设置
+## 4.1. ) 修改启动设置
 
 编辑grub
 
@@ -97,7 +119,7 @@ apt dist-upgrade -y
 
 `update-grub`
 
-## 2）增加模块
+## 4.2. ）增加模块
 
 修改配置文件
 
@@ -142,7 +164,7 @@ sed -i_orig "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-w
 * 安装系统时会自动创建LVM和LVM-Thin，其中LVM是root分区通常占用整个磁盘的10%左右，剩余部分除了分给swap分区（大小和内存相等）都给了LVM-Thin
 * 可以通过LVM管理命令将LVM-Thin容量都分给LVM，或删除LVM-Thin重新创建新的LVM分区
 
-## 可选操作1
+## 6.1. 可选操作1
 
 将LVM-Thin分区删除，容量分给LVM
 
@@ -160,7 +182,7 @@ echo 扩展文件系统
 resize2fs -p /dev/pve/root
 ```
 
-## 可选操作2
+## 6.2. 可选操作2
 
 将LVM-Thin分区删除，创建新的LVM
 
