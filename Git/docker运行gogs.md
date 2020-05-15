@@ -63,7 +63,9 @@ chmod 0600 /home/git/.ssh/*
 
 denied，这时可以进入容器内部看看/home/git/.ssh/目录内的authorized_keys文件，看看这个文件里是否有你的pub key，如果没有就加一行，保存后重启容器
 
-格式(每个pub key占一行，并且key-1数字部分是序号，这个序号是在web端添加ssh的顺序，必须一致)：
+格式：
+* 每个pub key占一行
+* key-1数字部分是序号，这个序号是在web端添加ssh的顺序，必须一致，不知序号是多少可以打开数据库查看，例如使用SqLite数据库：./data/gogs/data/gogs.db，查看public_key表
 
 ```shell
 command="/app/gogs/gogs serv key-1 --config='/data/gogs/conf/app.ini'",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCsclTsS3Pru9y3awEmo4nc9QKDi9wZVfAPlQO49V2XfDkMD++KK6EQajwbB+dCFpSBTgPBGCKSKVBZbmL3LCQsrqpR/gIWK3OTwQLKlkNpWHpzoJSsnflypwYn3IAqqVoN7em3P9AcxHmMzn4cJPjVLVJdTkoXPB7NEjzXeVVTGyyjd2pgo7mfkYF74n4re0g73II/IkHUibGmDXz6gjim9VNiRimJQ1L2Vdw7WMfxWVPv9FhxqC/KD9DYH/vGU18GWgWZT371OLi8SvoX2lAPbHfACrd5uHLFL3FzNv2/nnJy//SLTjAA7JMMhiDSQu84jkBpO7SgzjYfosLIQwhzuRlcDCb5yMGKAW112oAPV+rE9W0fMvCo3DLySEsEBCl9hPpaDBzHcH0kxDGH07HIsLhHIPfnFrTMf6TlHmkxBRvTtm6P7bISuhLR7INbU1KtF8ukWYlHL9NrP8pf8yrV0HmbOYD943gP4arDZBmSJA8a0rn/Ei6RzsDT2GNBsT0= asfuyao@qq.com
