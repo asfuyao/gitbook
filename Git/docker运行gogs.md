@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  docker运行gogs
-subtitle:   Linux相关
+subtitle:   Git相关
 date:   2020-05-11
 author: Winds
 header-img: img/post-bg-hacker.jpg
