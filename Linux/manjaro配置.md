@@ -20,6 +20,7 @@ tags:
     - [1.1. 查看系统信息](#11-查看系统信息)
     - [1.2. 换源](#12-换源)
     - [1.3. 安装字体](#13-安装字体)
+    - [1.4. 安装常用软件](#14-安装常用软件)
 
 <!-- /TOC -->
 
@@ -65,7 +66,7 @@ sudo pacman -Syyu
 sudo pacman -Sy wqy-microhei wqy-bitmapfont wqy-microhei-lite wqy-zenhei
 ```
 
-## 1.4 安装常用软件
+## 1.4. 安装常用软件
 
 ```shell
 sudo pacman -Sy remmina #远程桌面
