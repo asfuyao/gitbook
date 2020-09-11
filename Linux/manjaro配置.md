@@ -64,3 +64,9 @@ sudo pacman -Syyu
 ```shell
 sudo pacman -Sy wqy-microhei wqy-bitmapfont wqy-microhei-lite wqy-zenhei
 ```
+
+## 1.4 安装常用软件
+
+```shell
+sudo pacman -Sy remmina #远程桌面
+```
