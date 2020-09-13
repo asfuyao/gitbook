@@ -16,22 +16,22 @@ tags:
 
 <!-- TOC -->
 
-- [介绍](#介绍)
-- [官方网站](#官方网站)
-- [安装方法](#安装方法)
-- [简单使用](#简单使用)
-- [批量安装](#批量安装)
+- [1. 介绍](#1-介绍)
+- [2. 官方网站](#2-官方网站)
+- [3. 安装方法](#3-安装方法)
+- [4. 简单使用](#4-简单使用)
+- [5. 批量安装](#5-批量安装)
 
 <!-- /TOC -->
 
-# 介绍
+# 1. 介绍
 chocolatey是windows下的一个命令行的包管理工具，类似ubuntu的apt，或centos下的yum
 
-# 官方网站
+# 2. 官方网站
 
 https://chocolatey.org
 
-# 安装方法
+# 3. 安装方法
 
 需要在PowerShell的管理员权限下执行下面脚本：
 
@@ -39,7 +39,7 @@ https://chocolatey.org
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ```
 
-# 简单使用
+# 4. 简单使用
 
 安装好Choco后就可以用命令快速的安装需要的软件了
 
@@ -51,8 +51,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 * choco install visualstudio2017enterprise
 * choco install sql-server-management-studio
 
-# 批量安装
+# 5. 批量安装
 编辑以config结尾的文件，如：Package.config，输入以下内容：
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
     <packages>
@@ -68,4 +69,5 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
       <package id="office-tool" />      
     </packages>
 ```
+
 然后使用命令`choco install Package.config`来批量安装所需的软件
