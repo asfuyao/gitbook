@@ -14,7 +14,7 @@ tags:
 
 >硬件相关
 
-# 下载固件和 BIOS
+# 下载固件和BIOS
 
 [固件下载地址](https://docs.broadcom.com/docs/9211_8i_Package_P20_IR_IT_FW_BIOS_for_MSDOS_Windows.zip)
 

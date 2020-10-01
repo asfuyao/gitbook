@@ -69,5 +69,4 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
       <package id="office-tool" />      
     </packages>
 ```
-
 然后使用命令`choco install Package.config`来批量安装所需的软件

@@ -17,28 +17,24 @@ tags:
 <!-- TOC -->
 
 - [1. 修改root的bash设置](#1-修改root的bash设置)
-- [2. 修改源设置，去掉企业订阅](#2-修改源设置去掉企业订阅)
-- [3. 增加PVE源并更新](#3-增加pve源并更新)
-- [4. 打开Pci passthrough](#4-打开pci-passthrough)
-    - [4.1. ) 修改启动设置](#41--修改启动设置)
-    - [4.2. ）增加模块](#42-增加模块)
-- [5. 移除登录时的未订阅弹窗提示](#5-移除登录时的未订阅弹窗提示)
-- [6. 调整LVM分区（可选）](#6-调整lvm分区可选)
-    - [6.1. 可选操作1](#61-可选操作1)
-    - [6.2. 可选操作2](#62-可选操作2)
-- [7. 在安装时选择控制磁盘空间大小](#7-在安装时选择控制磁盘空间大小)
-- [8. 使用zfs文件系统](#8-使用zfs文件系统)
+- [2. 修改源设置](#2-修改源设置)
+    - [2.1. 注释掉/etc/apt/sources.list.d/pve-enterprise.list里面的内容](#21-注释掉etcaptsourceslistdpve-enterpriselist里面的内容)
+    - [2.2. 更换源为国内源](#22-更换源为国内源)
+- [3. 打开Pci passthrough](#3-打开pci-passthrough)
+    - [3.1. 修改启动设置](#31-修改启动设置)
+    - [3.2. 增加模块](#32-增加模块)
+- [4. 移除登录时的未订阅弹窗提示](#4-移除登录时的未订阅弹窗提示)
+- [5. 调整LVM分区（可选）](#5-调整lvm分区可选)
+    - [5.1. 可选操作1](#51-可选操作1)
+    - [5.2. 可选操作2](#52-可选操作2)
+- [6. 在安装时选择控制磁盘空间大小](#6-在安装时选择控制磁盘空间大小)
+- [7. 使用zfs文件系统](#7-使用zfs文件系统)
 
 <!-- /TOC -->
 
 # 1. 修改root的bash设置
 
-去掉下面内容的注释
-
-```shell
-cd
-vi .bashrc
-```
+去掉~/.bashrc里下面内容的注释
 
 ```bash
 # You may uncomment the following lines if you want `ls' to be colorized:
@@ -53,7 +49,13 @@ vi .bashrc
  alias cp='cp -i'
  alias mv='mv -i'
 ```
-# 更换源为国内源
+
+
+# 2. 修改源设置
+
+## 2.1. 注释掉/etc/apt/sources.list.d/pve-enterprise.list里面的内容
+
+## 2.2. 更换源为国内源
 
 ```sh
 #163源
@@ -68,40 +70,34 @@ deb http://mirrors.aliyun.com/debian-security buster/updates main
 deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
 deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
 
-#添加Proxmox VE 6的镜像存储库地址
-echo "deb http://mirrors.ustc.edu.cn/proxmox/debian/pve buster pve-no-subscription " > /etc/apt/sources.list.d/pve-no-sub.list
-#修改Ceph的升级包地址
-echo "deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous buster main" > /etc/apt/sources.list.d/ceph.list
+#清华源
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
 
+#非订阅源
+cat <<EOF >> /etc/apt/sources.list.d/pve-no-subscription.list
+deb https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian buster pve-no-subscription
+EOF
 
+#Ceph源
+cat <<EOF >> /etc/apt/sources.list.d/ceph.list
+deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous buster main
+EOF
 ```
 
-# 2. 修改源设置，去掉企业订阅
-
-注释掉下面配置文件的内容
-
-```sh
-vi /etc/apt/sources.list.d/pve-enterprise.list
-```
-
-# 3. 增加PVE源并更新
-如有内核更新需重启
-
-```sh
-echo "deb http://download.proxmox.com/debian/pve stretch pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
-wget http://download.proxmox.com/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
-
-apt update -y
-apt dist-upgrade -y
-```
-
-# 4. 打开Pci passthrough
+# 3. 打开Pci passthrough
 
 * [官方说明网址](https://pve.proxmox.com/wiki/Pci_passthrough)
 
 * 前提是CPU支持，pve官网说只有部分i7和大部分志强E3、E5支持
 
-## 4.1. ) 修改启动设置
+## 3.1. 修改启动设置
 
 编辑grub
 
@@ -119,7 +115,7 @@ apt dist-upgrade -y
 
 `update-grub`
 
-## 4.2. ）增加模块
+## 3.2. 增加模块
 
 修改配置文件
 
@@ -134,7 +130,7 @@ vfio_pci
 vfio_virqfd
 ```
 
-# 5. 移除登录时的未订阅弹窗提示
+# 4. 移除登录时的未订阅弹窗提示
 
 * 没有订阅企业版每次登录Web管理时都会出现一个“No Valid Subscription(无有效订阅)”的提示，需要修改一个文件就可以去掉这个提示
 * 5.1版的文件为“/usr/share/pve-manager/js/pvemanagerlib.js”，5.3版的文件换成了“/usr/share/javascript/proxmox–widget–toolkit/proxmoxlib.js”
@@ -158,13 +154,13 @@ sed -i_orig "s/data.status !== 'Active'/false/g" /usr/share/pve-manager/js/pvema
 sed -i_orig "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
 ```
 
-# 6. 调整LVM分区（可选）
+# 5. 调整LVM分区（可选）
 
 * PVE的LVM有两种，Thin和非Thin，LVM-Thin只能存放Disk image和Container，LVM能够存放更多类型的内容但缺点是：只能使用raw磁盘格式、不能创建快照、必须完整分配磁盘空间
 * 安装系统时会自动创建LVM和LVM-Thin，其中LVM是root分区通常占用整个磁盘的10%左右，剩余部分除了分给swap分区（大小和内存相等）都给了LVM-Thin
 * 可以通过LVM管理命令将LVM-Thin容量都分给LVM，或删除LVM-Thin重新创建新的LVM分区
 
-## 6.1. 可选操作1
+## 5.1. 可选操作1
 
 将LVM-Thin分区删除，容量分给LVM
 
@@ -182,7 +178,7 @@ echo 扩展文件系统
 resize2fs -p /dev/pve/root
 ```
 
-## 6.2. 可选操作2
+## 5.2. 可选操作2
 
 将LVM-Thin分区删除，创建新的LVM
 
@@ -210,13 +206,13 @@ echo 在/etc/fstab中增加自动挂载
 echo /dev/pve/data /mnt/data ext4 defaults 0 0 >> /etc/fstab
 ```
 
-# 7. 在安装时选择控制磁盘空间大小
+# 6. 在安装时选择控制磁盘空间大小
 
 * 安装时选择hdsize，指定pve的LVM卷的总体大小，保留未分配空间
 * 未分配空间可以通过fdisk命令来创建新的分区或用LVM管理命令创建卷
 * fdisk创建的新分区可以格式化为ext4、xfs、btrfs，并挂接到系统中，方法查考“可选操作2”中的格式化之后的步骤
 
-# 8. 使用zfs文件系统
+# 7. 使用zfs文件系统
 
 * fdisk创建的新分区也可以创建zfs系统，使用命令：`zpool create -f -o ashift=12 存储池名 /dev/sda4`
 * 查看zfs存储池：`zpool list`
