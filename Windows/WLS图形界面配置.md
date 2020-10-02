@@ -27,7 +27,7 @@
 
 # 3. WSL安装xface4
 
-`sudo apt install xface4`
+`sudo apt install xfce4`
 
 # 4. WLS配置
 
