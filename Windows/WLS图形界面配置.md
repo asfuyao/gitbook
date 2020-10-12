@@ -12,7 +12,11 @@
 
 # 1. 下载Windows下的X Server
 
-下载地址：https://sourceforge.net/projects/xming/
+下面两个X Server任选其一即可，配置方法类似
+
+Xming下载地址：https://sourceforge.net/projects/xming/
+
+VcXsrv下载地址：https://sourceforge.net/projects/vcxsrv/
 
 首次运行许允许通过Windows防火墙
 
