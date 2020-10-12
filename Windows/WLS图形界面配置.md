@@ -31,7 +31,7 @@ VcXsrv下载地址：https://sourceforge.net/projects/vcxsrv/
 
 # 3. WSL安装xface4
 
-`sudo apt install xface4`
+`sudo apt install xfce4`
 
 # 4. WLS配置
 
