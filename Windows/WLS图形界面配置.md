@@ -29,7 +29,7 @@ VcXsrv下载地址：https://sourceforge.net/projects/vcxsrv/
 3. 如果是WLS2则需要选中No Access Control
 4. 完成运行
 
-# 3. WSL安装xface4
+# 3. WSL安装xfce4
 
 `sudo apt install xfce4`
 
