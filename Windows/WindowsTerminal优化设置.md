@@ -70,3 +70,12 @@ Windows Terminal配置文件 settings.json 文件现在应如下所示：
     "startingDirectory": "//wsl$/Ubuntu/home/fuyao"
 }
 ```
+
+## 设置背景透明
+
+在default中加入下面设置：
+
+```json
+"useAcrylic": true, //开启亚巧克力特效
+"acrylicOpacity" : 0.8 //设置透明度，0为全透明
+```
