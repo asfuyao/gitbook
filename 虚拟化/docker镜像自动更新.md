@@ -259,6 +259,9 @@ docker run --rm \
 
 需要注意的是当这个容器设置过 com.centurylinklabs.watchtower.enable=false 参数时不会更新。
 
-# 3. 尾巴
+# 3. 查看执行日志
 
-以上是博主在使用 Watch­tower 中总结的一些使用方式和方法，当然它还有一些其它的功能与使用方式，比如电子邮件通知、监视私人注册表的镜像、更新远程主机上的容器等，这些对于一般用户来说可能很少会用到，所以这里就不赘述了，感兴趣的小伙伴可以去研究 Watchtower 官方文档。
+```shell
+docker logs --since="2020-11-14T10:10:00" watchtower
+```
+
