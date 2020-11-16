@@ -218,20 +218,22 @@ docker run -d \
 docker run -d \
     --name watchtower \
     --restart unless-stopped \
+    -e TZ=Asia/Shanghai \
     -v /var/run/docker.sock:/var/run/docker.sock \
     containrrr/watchtower -c \
     --interval 3600
 ```
 
---schedule, -s - 设置定时检测更新时间。格式为 6 字段 Cron 表达式，而非传统的 5 字段，即第一位是秒。比如每天凌晨 2 点检查一次更新：
+--schedule, -s - 设置定时检测更新时间。格式为 6 字段 Cron 表达式，而非传统的 5 字段，即第一位是秒。比如每天12 点检查一次更新：
 
 ```shell
 docker run -d \
     --name watchtower \
     --restart unless-stopped \
+    -e TZ=Asia/Shanghai \
     -v /var/run/docker.sock:/var/run/docker.sock \
     containrrr/watchtower -c \
-    --schedule "0 0 2 * * *"
+    --schedule "* * 12 * * *"
 ```
 
 ## 2.8. 手动更新
