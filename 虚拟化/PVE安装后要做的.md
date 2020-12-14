@@ -192,16 +192,16 @@ vgdisplay pve | grep Free
 
 echo 在卷组pve中创建卷data
 lvcreate -l 4096M -n data pve
+lvcreate -l 99%Free -n data pve
 
-echo 这时还可以继续创建LVM-Thin卷，使用命令转换：lvconvert --type thin-pool pve/data
+echo 这时还可以继续创建LVM-Thin卷，使用命令转换：lvconvert --type thin-pool pve/data，PS如果卷组pve的剩余空间为0，将无法完成转换
 
 echo 格式化data卷
 mkfs.ext4 /dev/pve/data
 
-echo 创建挂载目录，并挂载卷
+echo 创建挂载目录，并挂载卷，新版PVE不需要
 mkdir /mnt/data
 mount /dev/pve/data /mnt/data
-
 echo 在/etc/fstab中增加自动挂载
 echo /dev/pve/data /mnt/data ext4 defaults 0 0 >> /etc/fstab
 ```
