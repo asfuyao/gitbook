@@ -194,16 +194,29 @@ echo 在卷组pve中创建卷data
 lvcreate -l 4096M -n data pve
 lvcreate -l 99%Free -n data pve
 
-echo 这时还可以继续创建LVM-Thin卷，使用命令转换：lvconvert --type thin-pool pve/data，PS如果卷组pve的剩余空间为0，将无法完成转换
+echo 转换data为thin-pool，PS如果卷组pve的剩余空间为0，将无法完成转换
+lvconvert --type thin-pool pve/data
+
+echo 也可以直接创建精简卷
+lvcreate -l 100%Free --thin -n data pve
 
 echo 格式化data卷
 mkfs.ext4 /dev/pve/data
 
-echo 创建挂载目录，并挂载卷，新版PVE不需要
+echo 创建挂载目录，并挂载卷，新版PVE不需要（/etc/pve/storage.cfg配置中有就可以了）
 mkdir /mnt/data
 mount /dev/pve/data /mnt/data
 echo 在/etc/fstab中增加自动挂载
 echo /dev/pve/data /mnt/data ext4 defaults 0 0 >> /etc/fstab
+```
+
+存储配置 (/etc/pve/storage.cfg)例子
+
+```shell
+lvmthin: local-lvm
+         thinpool data
+         vgname pve
+         content rootdir,images
 ```
 
 # 6. 在安装时选择控制磁盘空间大小
@@ -219,3 +232,19 @@ echo /dev/pve/data /mnt/data ext4 defaults 0 0 >> /etc/fstab
 * 设置zfs压缩：`zfs set compression=on 存储池名`
 * 创建完zfs pool后可在web控制台在Datacenter节点的Storage菜单中添加新的zfs存储，添加时ZFS pool选择刚才创建的，ID随便填，确认后会以对应的ID值在磁盘根目录创建目录，例如ID填写为zfsdisk
 * zfs存储只能存放Disk image和Container，如果需要在zfs卷中放入iso等内容则可以创建zfs卷下的目录，例如如使用命令创建存放iso的目录：zfs create zfsdisk/iso，创建后在Datacenter节点的Storage菜单中添加新的Directory指向刚才创建的iso即可
+* 重装系统找回zfs磁盘，zpool import  查看，zpool import -f pool名  进行导入
+zfs存储配置 (/etc/pve/storage.cfg)例子
+
+```shell
+zfspool: local-zfs
+        pool rpool名称
+        sparse
+        content images,rootdir
+```
+
+* 修改名称，首先要屏蔽storage.cfg中的配置，先加上注释改好名后再去掉
+
+```shell
+zpool export rpool名称
+zpool import rpool名称 新名称
+```
