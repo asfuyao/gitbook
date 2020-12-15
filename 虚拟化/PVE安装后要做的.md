@@ -248,3 +248,10 @@ zfspool: local-zfs
 zpool export rpool名称
 zpool import rpool名称 新名称
 ```
+
+* 导入zfs中已有文件到虚拟机
+
+```shell
+qm importdisk 101 vm-101-disk-0 local-zfs
+qm rescan
+```
