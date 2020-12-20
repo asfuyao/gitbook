@@ -87,5 +87,8 @@ sudo pacman -S linux59-headers
 
 # chrome
 yay -S google-chrome
+
+# dotnet 5
+yay -S dotnet-sdk-bin
 ```
 
