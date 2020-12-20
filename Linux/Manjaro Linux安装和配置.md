@@ -48,6 +48,9 @@ yay -P -g
 ## 安装必备的软件包
 
 ```shell
+# 基本软件bao
+sudo pacman -S base-devel
+
 # 字体，安装后将系统字体设置为 文泉驿微米黑 和 文泉驿等宽微米黑
 sudo pacman -S wqy-microhei
 
@@ -81,6 +84,8 @@ sudo usermod -aG docker <your-user>
 sudo pacman -S remmina freerdp
 # vmware
 sudo pacman -S linux59-headers
-yay -S vmware-workstation
+
+# chrome
+yay -S google-chrome
 ```
 
