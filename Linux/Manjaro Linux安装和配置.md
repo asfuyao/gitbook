@@ -50,7 +50,8 @@ yay -P -g
 ```shell
 # 字体，安装后将系统字体设置为 文泉驿微米黑 和 文泉驿等宽微米黑
 sudo pacman -S wqy-microhei
-# 拼音输入法，需要注销重新进入后才能看到右下角的输入法图标
+
+# xfce4下fcitx5拼音输入法，需要注销重新进入后才能看到右下角的输入法图标
 sudo pacman -S fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk fcitx5-material-color fcitx5-qt
 # 创建fcitx5环境变量
 cat <<EOF > ~/.pam_environment
@@ -59,6 +60,10 @@ QT_IM_MODULE  DEFAULT=fcitx
 XMODIFIERS    DEFAULT=\@im=fcitx
 SDL_IM_MODULE DEFAULT=fcitx
 EOF
+
+# gnome下拼音
+sudo pacman -S ibus-pinyin
+
 # 常用软件
 sudo pacman -S vim git
 # v2ray
