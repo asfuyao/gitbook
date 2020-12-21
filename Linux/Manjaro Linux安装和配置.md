@@ -5,7 +5,6 @@
 * 语言选择：简体中文
 * 时区选择：Asia/Shanghai（亚洲、上海）
 * 磁盘分区格式：btrfs
-* 
 
 ## 设置软件源（GUI）
 
@@ -52,7 +51,7 @@ yay -P -g
 # 基本软件bao
 sudo pacman -S base-devel
 
-# 字体，安装后将系统字体设置为 文泉驿微米黑 和 文泉驿等宽微米黑
+# 字体，安装后将系统字体设置为 文泉驿微米黑 和 文泉驿等宽微米黑，打开gnome-tweaks将字体设置为文泉驿
 sudo pacman -S wqy-microhei
 
 # xfce4下fcitx5拼音输入法，需要注销重新进入后才能看到右下角的输入法图标
