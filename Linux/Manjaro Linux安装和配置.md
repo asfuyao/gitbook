@@ -44,6 +44,7 @@ yay -P -g
 
 * 进入 设置，在系统类设置中点击Manjaro Settings Maager（Manjaro设置管理器）
 * 打开 时间和日期，选中：自动设置时间和日期、本地区的硬件时钟
+双系统设置时间`sudo timedatectl set-local-rtc 1`
 
 ## 安装必备的软件包
 
