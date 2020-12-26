@@ -63,9 +63,40 @@ QT_IM_MODULE  DEFAULT=fcitx
 XMODIFIERS    DEFAULT=\@im=fcitx
 SDL_IM_MODULE DEFAULT=fcitx
 EOF
+# 创建配置文件目录
+mkdir ~/.config/fcitx5
+# 创建配置文件
+cat <<EOF > ~/.config/fcitx5/profile
+[Groups/0]
+# Group Name
+Name=Default
+# Layout
+Default Layout=us
+# Default Input Method
+DefaultIM=rime
 
-# gnome下拼音
-sudo pacman -S ibus-pinyin
+[Groups/0/Items/0]
+# Name
+Name=keyboard-us
+# Layout
+Layout=
+
+[Groups/0/Items/1]
+# Name
+Name=rime
+# Layout
+Layout=
+
+[GroupOrder]
+0=Default
+EOF
+
+# 注销或重启启用fcitx5
+# 修改拼音配置文件，或点击任务栏图标：配置->附加组件->拼音，点击设置图标
+vim ~/.config/fcitx5/conf/pinyin.conf
+
+# gnome下拼音，经测试会有选中剪切的问题
+# sudo pacman -S ibus-pinyin
 
 # 常用软件
 sudo pacman -S vim git
