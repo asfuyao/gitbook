@@ -7,8 +7,11 @@
 	"root": ".",
 	"links": {
 		"sidebar": {
-			"Home": "https://server.xwinds.top"
+			"Home": "http://localhost:4000/"
 		}
+	},
+	"theme-default": {
+		"showLevel": true
 	},
 	"styles": {
 		"website": "styles/website.css",
@@ -16,15 +19,42 @@
 		"pdf": "styles/pdf.css",
 		"mobi": "styles/mobi.css",
 		"epub": "styles/epub.css"
-	},
-	"plugins": [
-		"-search"
-	],
+	 },
+	  "plugins": [
+		"-sharing",
+		"splitter",
+		"search-pro",
+		"emphasize",
+		"expandable-chapters-small",
+		"advanced-emoji",
+		"ace",
+		"theme-comscore",
+		"anchor-navigation-ex"
+	  ],
 	"pluginsConfig": {
-		"fontSettings": {
-			"theme": "night",
-			"family": "sans",
-			"size": "1"
-		}
+		"theme-default": {
+			"showLevel": false
+		},
+		"anchor-navigation-ex": {
+            "showLevel": true,
+			"associatedWithSummary": true,
+			"printLog": false,
+			"multipleH1": true,
+			"mode": "float",
+			"showGoTop":true,
+			"float": {
+				"floatIcon": "fa fa-navicon",
+				"showLevelIcon": false,
+				"level1Icon": "fa fa-hand-o-right",
+				"level2Icon": "fa fa-hand-o-right",
+				"level3Icon": "fa fa-hand-o-right"
+			},
+			"pageTop": {
+				"showLevelIcon": false,
+				"level1Icon": "fa fa-hand-o-right",
+				"level2Icon": "fa fa-hand-o-right",
+				"level3Icon": "fa fa-hand-o-right"
+			}
+        }
 	}
 }
