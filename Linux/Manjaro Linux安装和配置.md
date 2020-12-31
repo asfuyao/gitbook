@@ -99,7 +99,7 @@ vim ~/.config/fcitx5/conf/pinyin.conf
 # sudo pacman -S ibus-pinyin
 
 # 常用软件
-sudo pacman -S vim git
+sudo pacman -S vim git base-devel
 # v2ray
 yay -S v2ray-desktop
 # wps
@@ -123,3 +123,11 @@ yay -S google-chrome
 yay -S dotnet-sdk-bin
 ```
 
+# 常用软件
+
+* htop 基于终端的彩色进程查看
+* tilix 一款终端软
+* xfce4-terminal
+* stacer
+* thunar xfce4的文件管理器
+* v2ray desktop
