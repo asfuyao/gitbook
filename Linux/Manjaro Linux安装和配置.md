@@ -131,3 +131,4 @@ yay -S dotnet-sdk-bin
 * stacer
 * thunar xfce4的文件管理器
 * v2ray desktop
+* neofetch
