@@ -1,5 +1,5 @@
 # Winds's gitbook
-- [前言](README.md)
+
 - [Git](Git/README.md)
   * [cmder下git-for-windows乱码解决方案](Git/cmder下git-for-windows乱码解决方案.md)
   * [docker运行gogs](Git/docker运行gogs.md)
@@ -18,6 +18,7 @@
   * [debian9安装gitbook](Linux/debian9安装gitbook.md)
   * [Manjaro Linux安装和配置](Linux/Manjaro Linux安装和配置.md)
   * [manjaro配置](Linux/manjaro配置.md)
+  * [OMV安装配置](Linux/OMV安装配置.md)
   * [ssh通道连接穿透内网](Linux/ssh通道连接穿透内网.md)
   * [Windows下用Xming远程开启Linux图形界面程序](Linux/Windows下用Xming远程开启Linux图形界面程序.md)
   * [例子VIM配置文件](Linux/例子VIM配置文件.md)
