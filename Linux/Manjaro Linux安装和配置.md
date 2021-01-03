@@ -132,3 +132,17 @@ yay -S dotnet-sdk-bin
 * thunar xfce4的文件管理器
 * v2ray desktop
 * neofetch
+
+# 常见问题
+
+## 关机时间超长
+
+编辑/etc/default/grub文件，再该文件下查找GRUB_CMDLINE_LINUX=”“一行，修改为：
+
+```shell
+#根据实际情况选择一种的引导方式
+GRUB_CMDLINE_LINUX="reboot=efi"
+#GRUB_CMDLINE_LINUX="reboot=bios"
+#GRUB_CMDLINE_LINUX="reboot=acpi"
+#GRUB_CMDLINE_LINUX="reboot=pci"
+```
