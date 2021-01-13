@@ -58,14 +58,14 @@ Windows Terminal配置文件 settings.json 文件现在应如下所示：
     "hidden": false,
     "name": "PowerShell",
     "source": "Windows.Terminal.PowershellCore",
-    "fontFace": "Cascadia Code PL"
+    "fontFace": "Cascadia Mono PL"
 },
 {
     "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "hidden": false,
     "name": "Ubuntu",
     "source": "Windows.Terminal.Wsl",
-    "fontFace": "Cascadia Code PL",
+    "fontFace": "Cascadia Mono PL",
     //配置起始路径
     "startingDirectory": "//wsl$/Ubuntu/home/fuyao"
 }
