@@ -9,55 +9,99 @@ catalog: true
 tags:
     - 终端
     - zsh
-    - Notes
+    - Notaan
 ---
 
+# 安装zsh
 
-> 比较水的 Personal Notes
+```shell
+# 安装 Zsh
+sudo apt install zsh
 
-## 查看你的系统有几种shell
+# 将 Zsh 设置为默认 Shell
+chsh -s /bin/zsh
 
-	cat /etc/shells
+# 可以通过 echo $SHELL 查看当前默认的 Shell，如果没有改为 /bin/zsh，那么需要重启 Shell。
+```
 
-显示
+# 安装 oh my zsh
 
-	/bin/bash
-	/bin/csh
-	/bin/ksh
-	/bin/sh
-	/bin/tcsh
-	/bin/zsh
-	
-## 安装 oh my zsh
+	# 安装 Oh My Zsh
+	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+	# 以上命令可能不好使，可使用如下两条命令
+	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
+	bash ./install.sh
 
-	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-	cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+# zsh配置
 
-重新打开终端，输入 
-	
-	zsh
+## 安装插件
 
-即可切换终端，并且发现 oh my zsh 已经帮我们配置好 zsh 了
+```shell
+# 快速访问文件或目录
+sudo apt install fasd
+# 用法
+alias f='fasd -f'          # 文件
+alias d='fasd -d'        # 目录
+alias a='fasd -a'        # 任意
+alias s='fasd -si'       # 显示并选择
+alias sd='fasd -sid'        # 选择目录
+alias sf='fasd -sif'          # 选择文件
+alias z='fasd_cd -d'       # 跳转至目录
+alias zz='fasd_cd -d -i'  # 选择并跳转至目录
 
-## 修改主题
+# 命令行命令键入时的历史命令建议插件
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-	open ~/.zshrc 
-	
-修改 `ZSH_THEME=”robbyrussell”`，主题在 ~/.oh-my-zsh/themes 目录下。
-修改为
+# 命令行语法高亮插件
+ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
 
-	ZSH_THEME="kolo"
+## 安装字体
 
-可以[参照这里](https://github.com/robbyrussell/oh-my-zsh/wiki/themes)进行选择.
+推荐在终端使用 Powerline 类型的主题，该类型主题可以使用图形表示尽可能多的信息，方便用户的使用。安装用户量最大的 [Powerlevel9k](https://github.com/bhilburn/powerlevel9k)，Powerlevel9k 中需要使用较多的图形符号，字体大多不会自带这些符号，所以需要使用专门的 Powerline 字体。推荐字体[Hack](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete)
 
-## 设置为默认shell
+推荐安装Powerlevel9k的升级版Powerlevel10k，新版本速度大大提升，官网：https://github.com/romkatv/powerlevel10k
 
-	chsh -s /bin/zsh
-	
-## 添加自定义命令
+**安装好系统后，需要给终端配置字体**
 
-	open ~/.zshrc
-添加显示隐藏文件的快捷命令
+## PowerLeveL10K 主题安装
 
-	alias fd='defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder'
-	alias fh='defaults write com.apple.finder AppleShowAllFiles -boolean false ; killall Finder'
+```shell
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+### .zshrc配置文件修改
+
+```shell
+# 设置主题
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+### 设置向导
+
+```shell
+p10k configure
+```
+
+## Powerlevel9k 主题安装
+
+### 安装主题
+
+```shell
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+```
+
+### .zshrc配置文件修改
+
+```shell
+# 设置主题
+ZSH_THEME="powerlevel9k/powerlevel9k"
+# 设置powerlevel9k
+# 提示符左侧：目录、源码状态、新行
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline)
+# 提示符右侧：状态、内存、CPU、时间
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram load time)
+# 图标
+POWERLEVEL9K_MODE='nerdfont-complete'
+```
+
