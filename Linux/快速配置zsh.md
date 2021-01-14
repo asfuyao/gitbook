@@ -29,8 +29,7 @@ chsh -s /bin/zsh
 	# 安装 Oh My Zsh
 	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 	# 以上命令可能不好使，可使用如下两条命令
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
-	bash ./install.sh
+	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh bash ./install.sh
 
 # zsh配置
 
