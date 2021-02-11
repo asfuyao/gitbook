@@ -23,4 +23,15 @@ google-chrome firefox nextcloud visual-studio-code kaka maczip iterm2 cheatsheet
 
 # app store安装的软件
 
-钉钉 QQ 微信
+钉钉 QQ 微信 福昕阅读器
+
+# 制作安装U盘
+
+```shell
+# 初始化U盘，清空分区和数据
+sudo diskutil eraseDisk ExFAT 磁盘卷标 MBR disk6
+
+# 制作Big Sur安装U盘
+sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/磁盘卷标
+
+```
