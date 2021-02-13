@@ -1,6 +1,6 @@
 @echo off
 
-book sm -c ['Git','Linux','Windows','¿ª·¢¹¤¾ß','¿ª·¢¼¼Êõ','Êı¾İ¿â','ĞéÄâ»¯','Ó²¼ş']
+book sm -c ['MacOS','Linux','Windows','å¼€å‘å·¥å…·','å¼€å‘æŠ€æœ¯','Git','æ•°æ®åº“','è™šæ‹ŸåŒ–','ç¡¬ä»¶']
 
 set sed="C:\Program Files\Git\usr\bin\sed"
-%sed% -i 2a\"- [ËµÃ÷](README.md)" SUMMARY.md
+%sed% -i 2a\"- [è¯´æ˜](README.md)" SUMMARY.md
