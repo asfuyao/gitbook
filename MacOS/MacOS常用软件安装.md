@@ -19,7 +19,32 @@ proxyon='export all_proxy=socks5://127.0.0.1:1080'
 软件安装方式：brew install --cask 软件包名称
 
 常用的软件包有：
-google-chrome firefox nextcloud visual-studio-code kaka maczip iterm2 cheatsheet rectangle mounty eudic openvpn-connect tencent-meeting baidunetdisk gimp typora neteasemusic
+
+* google-chrome
+* firefox
+* nextcloud
+* visual-studio-code
+* kaka 解压缩工具
+* maczip 解压缩工具
+* iterm2
+* cheatsheet 长按command快捷键提示
+* rectangle 屏幕分割
+* mounty ntfs磁盘挂接读写模式
+* eudic 欧路词典
+* openvpn-connect
+* tencent-meeting 腾讯会议
+* baidunetdisk
+* gimp
+* iina 视频播放器
+* typora
+* neteasemusic
+
+其他：
+
+* yacreader 看漫画
+* zy-player 网络视频资源播放
+* yesplaymusic 网易云第三方客户端
+* dia 流程图制作
 
 # app store安装的软件
 
