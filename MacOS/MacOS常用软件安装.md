@@ -83,7 +83,7 @@ brew uninstall --force 软件包名 # 删除所有版本
 
 * yacreader 看漫画
 * zy-player 网络视频资源播放
-* yesplaymusic 网易云第三方客户端
+* lx-music 落雪音乐，网络音乐聚合
 * dia 流程图制作
 
 # app store安装的软件
