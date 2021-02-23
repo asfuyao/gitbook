@@ -43,6 +43,7 @@
   * [DevExpress控件使用技巧](开发技术/DevExpress控件使用技巧.md)
   * [dotnet5开发技术](开发技术/dotnet5开发技术.md)
   * [iisexpress常见故障处理](开发技术/iisexpress常见故障处理.md)
+  * [python环境设置](开发技术/python环境设置.md)
   * [常用js脚本](开发技术/常用js脚本.md)
 - [数据库](数据库/README.md)
   - [Oracle](数据库/Oracle/README.md)
