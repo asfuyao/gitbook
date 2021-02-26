@@ -76,6 +76,7 @@ brew uninstall --force 软件包名 # 删除所有版本
 * baidunetdisk
 * gimp
 * iina 视频播放器
+* deadbeef 音频播放器
 * typora
 * neteasemusic
 
