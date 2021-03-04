@@ -27,9 +27,9 @@ chsh -s /bin/zsh
 # 安装 oh my zsh
 
 	# 安装 Oh My Zsh
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	# 以上命令可能不好使，可使用如下两条命令
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh bash ./install.sh
+	sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 # zsh配置
 
@@ -93,14 +93,12 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 ### .zshrc配置文件修改
 
 ```shell
-# 设置主题
-ZSH_THEME="powerlevel9k/powerlevel9k"
-# 设置powerlevel9k
-# 提示符左侧：目录、源码状态、新行
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline)
-# 提示符右侧：状态、内存、CPU、时间
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram load time)
-# 图标
-POWERLEVEL9K_MODE='nerdfont-complete'
+# 设置插件
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+# 设置别名
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+alias vi="vim"
 ```
 
