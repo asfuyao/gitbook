@@ -7,7 +7,7 @@
 	"root": ".",
 	"links": {
 		"sidebar": {
-			"Home": "https://server.xwinds.top/"
+			"Home": "https://gitbook.xwinds.top/"
 		}
 	},
 	"theme-default": {
