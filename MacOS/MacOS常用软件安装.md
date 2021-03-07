@@ -8,8 +8,13 @@ brew在国内安装非常慢甚至无法安装，需要开启代理
 
 ```shell
 # 设置代理别名
-proxyoff='unset all_proxy'
-proxyon='export all_proxy=socks5://127.0.0.1:1080'
+alias proxyoff='unset all_proxy'
+alias proxyon='export all_proxy=socks5://127.0.0.1:1080'
+# 在终端中执行，增加git代理
+export https_proxy=http://127.0.0.1:1087
+export http_proxy=http://127.0.0.1:1087
+git config --global http.proxy 'http://127.0.0.1:1087'
+git config --global https.proxy 'http://127.0.0.1:1087'
 ```
 
 到brew官网找安装命令https://brew.sh/
@@ -79,6 +84,7 @@ brew uninstall --force 软件包名 # 删除所有版本
 * deadbeef 音频播放器
 * typora
 * neteasemusic
+* 
 
 其他：
 
@@ -89,7 +95,11 @@ brew uninstall --force 软件包名 # 删除所有版本
 
 # app store安装的软件
 
-钉钉 QQ 微信 福昕阅读器
+* 钉钉
+* QQ
+* 微信
+* 福昕阅读器
+* Silicon Info #查看应用架构
 
 # 制作安装U盘
 
