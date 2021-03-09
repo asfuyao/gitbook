@@ -74,6 +74,7 @@ brew uninstall --force 软件包名 # 删除所有版本
 * iterm2
 * cheatsheet 长按command快捷键提示
 * rectangle 屏幕分割
+* mos 鼠标平滑滚动，滚动方向与触摸板分离
 * mounty ntfs磁盘挂接读写模式
 * eudic 欧路词典
 * openvpn-connect
@@ -100,6 +101,7 @@ brew uninstall --force 软件包名 # 删除所有版本
 * 微信
 * 福昕阅读器
 * Silicon Info #查看应用架构
+* Helm host文件快速编辑
 
 # 制作安装U盘
 
