@@ -85,7 +85,10 @@ brew uninstall --force 软件包名 # 删除所有版本
 * deadbeef 音频播放器
 * typora
 * neteasemusic
-* 
+* koodo-reader 电子书阅读
+* electerm ssh和sftp工具
+* drawio 流程图绘制
+* azure-data-studio 微软的新一代数据库管理工具
 
 其他：
 
