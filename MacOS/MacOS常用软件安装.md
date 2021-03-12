@@ -11,10 +11,14 @@ brew在国内安装非常慢甚至无法安装，需要开启代理
 alias proxyoff='unset all_proxy'
 alias proxyon='export all_proxy=socks5://127.0.0.1:1080'
 # 在终端中执行，增加git代理
-export https_proxy=http://127.0.0.1:1087
-export http_proxy=http://127.0.0.1:1087
+export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087
+unset https_proxy http_proxy
+# git设置代理
 git config --global http.proxy 'http://127.0.0.1:1087'
 git config --global https.proxy 'http://127.0.0.1:1087'
+# git取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
 
 到brew官网找安装命令https://brew.sh/
