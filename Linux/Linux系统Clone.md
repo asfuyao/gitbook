@@ -15,3 +15,8 @@ grub-install --target=x86_64-efi /dev/sdb
 grub-install --recheck /dev/sdb
 ```
 
+
+
+# 其他问题
+
+* 启动出现错误提示：mdadm: no arrays found in config file or automatically，删除/etc/mdadm/mdadm.conf，执行`update-initramfs -u`
