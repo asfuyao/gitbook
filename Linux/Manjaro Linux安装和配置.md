@@ -19,7 +19,7 @@
 
 ```shell
 # 更新镜像排名，会出现窗口提供指定区域数据源供选择
-sudo pacman-mirrors -i -c Russia -m rank
+sudo pacman-mirrors -i -c China -m rank
 # 更新数据源
 sudo pacman -Syy
 ```

@@ -11,10 +11,14 @@ brew在国内安装非常慢甚至无法安装，需要开启代理
 alias proxyoff='unset all_proxy'
 alias proxyon='export all_proxy=socks5://127.0.0.1:1080'
 # 在终端中执行，增加git代理
-export https_proxy=http://127.0.0.1:1087
-export http_proxy=http://127.0.0.1:1087
+export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087
+unset https_proxy http_proxy
+# git设置代理
 git config --global http.proxy 'http://127.0.0.1:1087'
 git config --global https.proxy 'http://127.0.0.1:1087'
+# git取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
 
 到brew官网找安装命令https://brew.sh/
@@ -74,6 +78,7 @@ brew uninstall --force 软件包名 # 删除所有版本
 * iterm2
 * cheatsheet 长按command快捷键提示
 * rectangle 屏幕分割
+* mos 鼠标平滑滚动，滚动方向与触摸板分离
 * mounty ntfs磁盘挂接读写模式
 * eudic 欧路词典
 * openvpn-connect
@@ -84,7 +89,10 @@ brew uninstall --force 软件包名 # 删除所有版本
 * deadbeef 音频播放器
 * typora
 * neteasemusic
-* 
+* koodo-reader 电子书阅读
+* electerm ssh和sftp工具
+* drawio 流程图绘制
+* azure-data-studio 微软的新一代数据库管理工具
 
 其他：
 
@@ -100,6 +108,7 @@ brew uninstall --force 软件包名 # 删除所有版本
 * 微信
 * 福昕阅读器
 * Silicon Info #查看应用架构
+* Helm host文件快速编辑
 
 # 制作安装U盘
 
