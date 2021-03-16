@@ -1,3 +1,11 @@
+# 复制分区数据
+
+下载[SystemRescueCD](https://www.system-rescue.org/Download/)
+
+方法1：用gperted复制分区数据
+
+方法2：用clonezilla
+
 # GPT格式分区恢复Grub
 
 从RescueCD引导系统，命令行执行：
