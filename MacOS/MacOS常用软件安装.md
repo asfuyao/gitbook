@@ -93,6 +93,7 @@ brew uninstall --force 软件包名 # 删除所有版本
 * electerm ssh和sftp工具
 * drawio 流程图绘制
 * azure-data-studio 微软的新一代数据库管理工具
+* neat-reader 电子书云阅读
 
 其他：
 
@@ -119,4 +120,16 @@ sudo diskutil eraseDisk ExFAT 磁盘卷标 MBR disk6
 # 制作Big Sur安装U盘
 sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/磁盘卷标
 
+```
+
+# mac时光机加速
+
+时光机器备份太慢是由于 macOS 本身对其进行了限流的措施，对硬盘读写的频率和内存使用都做了一定的限制，主要是为了防止在备份期间影响了用户正常使用电脑工作。
+
+```shell
+# 解除限流
+sudo sysctl debug.lowpri_throttle_enabled=0
+
+# 开启限流
+sudo sysctl debug.lowpri_throttle_enabled=1
 ```
