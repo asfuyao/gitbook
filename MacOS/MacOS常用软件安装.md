@@ -20,6 +20,10 @@ git config --global https.proxy 'http://127.0.0.1:1087'
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 
+# nvm设置代理
+nvm proxy http://127.0.0.1:7890
+nvm proxy none
+
 # npm设置代理用户名和密码
 npm config set proxy http://127.0.0.1:7890
 npm confit set https-proxy http://127.0.0.1:7890
