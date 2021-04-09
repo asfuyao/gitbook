@@ -19,6 +19,14 @@ git config --global https.proxy 'http://127.0.0.1:1087'
 # git取消代理
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+
+# npm设置代理用户名和密码
+npm config set proxy http://127.0.0.1:7890
+npm confit set https-proxy http://127.0.0.1:7890
+
+# npm取消代理
+npm config delete proxy
+npm config delete https-proxy
 ```
 
 到brew官网找安装命令https://brew.sh/
