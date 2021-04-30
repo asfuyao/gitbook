@@ -100,8 +100,12 @@ vim ~/.config/fcitx5/conf/pinyin.conf
 
 # 常用软件
 sudo pacman -S vim git base-devel
+# windows文件共享
+sudo pacman -S smbclient
 # v2ray
 yay -S v2ray-desktop
+# clash
+yay -S clashy-bin
 # wps
 yay -S wps-office-cn wps-office-mui-zh-cn wps-office-fonts wps-office-mime-cn ttf-wps-fonts
 # markdown编辑器typora
@@ -114,13 +118,16 @@ sudo usermod -aG docker <your-user>
 # remmina
 sudo pacman -S remmina freerdp
 # vmware
-sudo pacman -S linux59-headers
+sudo pacman -S linux510-headers
 
 # chrome
 yay -S google-chrome
 
 # dotnet 5
 yay -S dotnet-sdk-bin
+# visual code
+yay -S visual-studio-code-bin
+
 ```
 
 # 常用软件
