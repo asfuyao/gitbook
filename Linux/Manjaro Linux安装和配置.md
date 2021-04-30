@@ -147,6 +147,7 @@ yay -S rider
 * stacer 系统优化清理
 * thunar xfce4的文件管理器
 * neofetch linux配置显示
+* nodepadqq 文本编辑器
 
 # 常见问题
 
