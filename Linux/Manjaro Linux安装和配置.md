@@ -115,6 +115,11 @@ sudo pacman -S docker docker-compose
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo usermod -aG docker <your-user>
+# ZeroTier
+sudo pacman -S zerotier-one
+sudo systemctl enable zerotier-one.service
+sudo systemctl start zerotier-one.service
+sudo zerotier-cli join NetworkID
 # remmina
 sudo pacman -S remmina freerdp
 # vmware
