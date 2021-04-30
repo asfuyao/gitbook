@@ -125,8 +125,12 @@ yay -S google-chrome
 
 # dotnet 5
 yay -S dotnet-sdk-bin
+
 # visual code
 yay -S visual-studio-code-bin
+
+# rider
+yay -S rider
 
 ```
 
@@ -137,7 +141,6 @@ yay -S visual-studio-code-bin
 * xfce4-terminal
 * stacer
 * thunar xfce4的文件管理器
-* v2ray desktop
 * neofetch
 
 # 常见问题
