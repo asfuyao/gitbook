@@ -144,9 +144,9 @@ yay -S rider
 * htop 基于终端的彩色进程查看
 * tilix 一款终端软
 * xfce4-terminal
-* stacer
+* stacer 系统优化清理
 * thunar xfce4的文件管理器
-* neofetch
+* neofetch linux配置显示
 
 # 常见问题
 
