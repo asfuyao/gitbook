@@ -162,3 +162,9 @@ GRUB_CMDLINE_LINUX="reboot=efi"
 #GRUB_CMDLINE_LINUX="reboot=acpi"
 #GRUB_CMDLINE_LINUX="reboot=pci"
 ```
+
+## 开机后黑屏
+
+编辑/etc/default/grub文件
+删除下面配置中的splash即可
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash apparmor=1 security=apparmor udev.log_priority=3"
