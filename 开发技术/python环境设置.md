@@ -40,3 +40,7 @@ requests==2.22.0
 Werkzeug==0.15.5
 ```
 
+# VSCode下使用虚拟环境调试
+
+* 按F1，选择Python解释器，Python: Select Interpreter
+* 选择：.\venv\Scripts\python.exe
