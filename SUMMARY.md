@@ -1,6 +1,7 @@
 # Winds's gitbook
 
-- [说明](README.md)
+- Android
+  * [常用刷机命令](Android/常用刷机命令.md)
 - [Git](Git/README.md)
   * [cmder下git-for-windows乱码解决方案](Git/cmder下git-for-windows乱码解决方案.md)
   * [docker运行gogs](Git/docker运行gogs.md)
@@ -17,7 +18,6 @@
   * [Linux下终端使用代理上网](Linux/Linux下终端使用代理上网.md)
   * [Linux系统Clone](Linux/Linux系统Clone.md)
   * [Manjaro Linux安装和配置](Linux/Manjaro Linux安装和配置.md)
-  * [manjaro配置](Linux/manjaro配置.md)
   * [OMV安装配置](Linux/OMV安装配置.md)
   * [ssh通道连接穿透内网](Linux/ssh通道连接穿透内网.md)
   * [Ubuntu-Windows双系统时间同步](Linux/Ubuntu-Windows双系统时间同步.md)
