@@ -27,6 +27,17 @@ virtualenv venv
 venv\scripts\activate
 ```
 
+# 安装工具
+
+```shell
+# 安装cnpm
+npm install -g cnpm
+# 安装yarn：
+cnpm install -g yarn
+# 设置yarn镜像
+yarn config set registry http://registry.npm.taobao.org/
+```
+
 # 安装项目依赖
 
 pip install -r requirements.txt
