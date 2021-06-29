@@ -9,3 +9,9 @@ wmic CSPRODUCT get Version
 ```cmd
 wmic CSPRODUCT get IdentifyingNumber
 ```
+
+# 同时获取型号和序列号
+
+```cmd
+wmic CSPRODUCT get IdentifyingNumber,Version
+```
