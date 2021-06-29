@@ -1,17 +1,5 @@
-# 获取型号
+# 获取产品信息
 
 ```cmd
-wmic CSPRODUCT get Version
-```
-
-# 获取序列号
-
-```cmd
-wmic CSPRODUCT get IdentifyingNumber
-```
-
-# 同时获取型号和序列号
-
-```cmd
-wmic CSPRODUCT get IdentifyingNumber,Version
+wmic CSPRODUCT get IdentifyingNumber,Name,UUID,Vendor,Version
 ```
