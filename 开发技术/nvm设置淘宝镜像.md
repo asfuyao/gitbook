@@ -5,3 +5,5 @@ nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 
 设置node_mirror:
 nvm node_mirror https://npm.taobao.org/mirrors/node/
+
+注：nvm安装路径不能带空格
