@@ -2,8 +2,8 @@
 
 - [1. 安装Node.js版本管理NVM](#1-安装nodejs版本管理nvm)
 - [2. 设置安装镜像](#2-设置安装镜像)
-    - [2.1. 设置nvm node下载镜像:](#21-设置nvm-node下载镜像)
-    - [2.2. 设置nvm npm下载镜像:](#22-设置nvm-npm下载镜像)
+    - [2.1. 设置nvm node下载镜像](#21-设置nvm-node下载镜像)
+    - [2.2. 设置nvm npm下载镜像](#22-设置nvm-npm下载镜像)
     - [2.3. 安装Node.js](#23-安装nodejs)
     - [2.4. 查看可用的版本列表](#24-查看可用的版本列表)
     - [2.5. 安装指定版本的Node.js](#25-安装指定版本的nodejs)
@@ -22,13 +22,13 @@
 
 # 2. 设置安装镜像
 
-## 2.1. 设置nvm node下载镜像:
+## 2.1. 设置nvm node下载镜像
 
 ```cmd
 nvm node_mirror https://npm.taobao.org/mirrors/node/
 ```
 
-## 2.2. 设置nvm npm下载镜像:
+## 2.2. 设置nvm npm下载镜像
 
 ```cmd
 nvm npm_mirror https://npm.taobao.org/mirrors/npm/
