@@ -18,7 +18,8 @@ ssh-keygen -t rsa -C "name"
 
 # 2. 上传公钥并设置权限
 
-* 公钥id_rsa.pub需保存到远程服务器~/.ssh目录下，并重命名为authorized_keys
+* 在远程服务器~/.ssh目录下，创建authorized_keys文件
+* 将公钥id_rsa.pub内容复制到authorized_keys中（可复制多个公钥）
 * 要保证目录.ssh和文件authorized_keys都只有用户自己有写权限，否则验证无效。
 
 ```shell
