@@ -21,3 +21,14 @@ docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /va
     ] //设置仓库镜像
 }
 ```
+# 重启docker
+
+```shell
+# 守护进程重启
+systemctl daemon-reload
+
+# 重启docker服务
+systemctl restart docker
+service docker restart
+
+```
