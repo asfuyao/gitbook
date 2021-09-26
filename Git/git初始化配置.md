@@ -34,6 +34,8 @@ ssh-keygen -t rsa -C "your_email@example.com"
 
 ## 1.2. 设置line endings
 
+参考网址：https://docs.github.com/cn/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
+
 ```shell
 # Windows
 git config --global core.autocrlf true
