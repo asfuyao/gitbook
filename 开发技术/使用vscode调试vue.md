@@ -9,7 +9,11 @@
 
 # 1. 安装插件
 
-安装vscode插件：Debugger for Microsoft Edge
+安装vscode插件
+
+* Edge浏览器: Debugger for Microsoft Edge
+* Chrome浏览器: Debugger for Chrome
+
 
 # 2. 修改vue.config.js
 
@@ -23,7 +27,9 @@ configureWebpack: {
 
 # 3. 创建运行和调试配置文件
 
-新建Edge launch，并修改成下面格式
+创建.vscode/launch.json（可自动创建或手工创建）,改成下面内容
+
+Edge浏览器：
 
 ```json
 {
@@ -33,10 +39,10 @@ configureWebpack: {
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-msedge",
+            "type": "pwa-msedge", //chrome浏览器改为：pwa-chrome
             "request": "launch",
-            "name": "Launch Edge against localhost",
-            "url": "http://localhost:8080",  //地址
+            "name": "Launch brower against localhost",
+            "url": "http://localhost:8080",  //根据实际地址和端口填写
             "webRoot": "${workspaceFolder}/src",
             "breakOnLoad": true,
             "sourceMapPathOverrides": {
