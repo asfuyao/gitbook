@@ -54,3 +54,13 @@ gitlab-rails console
 # 发测试邮件
 Notify.test_email('你的收件邮箱', '测试邮件标题', '测试邮件正文').deliver_now
 ```
+
+# debian安装
+
+```shell
+sudo apt-get update
+sudo apt-get install -y curl openssh-server ca-certificates perl
+sudo apt-get install -y postfix
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo EXTERNAL_URL="http://服务器IP:gitlab端口" apt-get install gitlab-ce
+```
