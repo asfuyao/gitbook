@@ -17,7 +17,7 @@
 
 # 2. 修改vue.config.js
 
-添加下面配置
+添加下面配置，configureWebpack内有其他设置可能会有影响，目前不知道如何和其他配置共存
 
 ```json
 configureWebpack: {
@@ -27,7 +27,7 @@ configureWebpack: {
 
 # 3. 创建运行和调试配置文件
 
-创建.vscode/launch.json（可自动创建或手工创建）,改成下面内容
+在debug试图，创建.vscode/launch.json（可自动创建或手工创建）,改成下面内容
 
 Edge浏览器：
 
@@ -41,7 +41,7 @@ Edge浏览器：
         {
             "type": "pwa-msedge", //chrome浏览器改为：pwa-chrome
             "request": "launch",
-            "name": "Launch brower against localhost",
+            "name": "vuejs: msedge",
             "url": "http://localhost:8080",  //根据实际地址和端口填写
             "webRoot": "${workspaceFolder}/src",
             "breakOnLoad": true,
@@ -91,3 +91,9 @@ module.exports = {
   }
 };
 ```
+
+# 5. 运行和debug
+
+* 在vscode的终端窗口执行：yarn run serve 或 npm run serve
+* 到debug视图点绿色三角号运行之前的配置
+* 这是编辑窗口上方的debug条会出现下拉框，选择vuejs: msedge即可
