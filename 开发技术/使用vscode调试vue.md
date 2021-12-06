@@ -94,6 +94,6 @@ module.exports = {
 
 # 5. 运行和debug
 
-* 在vscode的终端窗口执行：yarn run serve 或 npm run serve
+* 在资源管理器窗口，打开NPM脚本，点击serve调试
 * 到debug视图点绿色三角号运行之前的配置
 * 这是编辑窗口上方的debug条会出现下拉框，选择vuejs: msedge即可
