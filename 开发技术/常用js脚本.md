@@ -33,3 +33,11 @@ function sortByArr(arr, rev) {
   };
 }
 ```
+
+## jquery控制select2 插件的显示与隐藏
+
+```javascript
+$("#sb_brand").next().css("display", "none");
+$("#sb_brand").next().css("display", "inline-block");
+```
+
