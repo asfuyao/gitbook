@@ -33,3 +33,15 @@ Github地址：https://github.com/wmjordan/Codist
 CodeMaid是一个开源的Visual Studio的扩展插件，用于整理与优化代码等。功能类似于商业软件Resharper，但它是免费的，并且开放源代码。它能帮助你更容易的理解你的代码，支持多种编程语言。
 
 GitHub地址：https://github.com/codecadwallader/codemaid
+
+## Collapse Level
+
+快速折叠代码，快捷键Alt+数字，表示折叠的等级
+
+## Collapse Comments
+
+快速折叠注释
+
+## IndentRainbow
+
+给缩进增加颜色来区分
