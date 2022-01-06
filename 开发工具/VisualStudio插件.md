@@ -38,10 +38,14 @@ GitHub地址：https://github.com/codecadwallader/codemaid
 
 快速折叠代码，快捷键Alt+数字，表示折叠的等级
 
-## Collapse Comments
+## File Icons
 
-快速折叠注释
+增加文件图标
 
 ## IndentRainbow
 
 给缩进增加颜色来区分
+
+## Code alignment
+
+代码对齐，不是格式化，对其是指把代码变量或赋值等语句对齐，说不明白了用就完了
