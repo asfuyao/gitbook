@@ -4,7 +4,7 @@
 
 为代码增加彩虹括号和关键字高亮。括弧、中括号、花括号都会根据层级显示不同的颜色，一定程度上能方便找到未匹配的括弧。
 
-VS2019可以在管理扩展中查找并安装，VS2020可以到Github下载
+VS2019可以在管理扩展中查找并安装，VS2022可以到Github下载
 
 GitHub地址：https://github.com/IllyaTheHath/viasfora
 
