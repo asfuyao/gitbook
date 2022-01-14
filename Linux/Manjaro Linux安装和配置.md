@@ -139,7 +139,7 @@ yay -S rider
 
 ```
 
-# 常用软件
+## 常用软件
 
 * htop 基于终端的彩色进程查看
 * tilix 一款终端软
@@ -148,10 +148,11 @@ yay -S rider
 * thunar xfce4的文件管理器
 * neofetch linux配置显示
 * nodepadqq 文本编辑器
+* remmina 远程桌面，附加软件：freerdp2-x11 remmina-plugin-exec remmina-plugin-kwallet remmina-plugin-nx remmina-plugin-spice remmina-plugin-www
 
-# 常见问题
+## 常见问题
 
-## 关机时间超长
+### 关机时间超长
 
 编辑/etc/default/grub文件，再该文件下查找GRUB_CMDLINE_LINUX=”“一行，修改为：
 
@@ -163,7 +164,7 @@ GRUB_CMDLINE_LINUX="reboot=efi"
 #GRUB_CMDLINE_LINUX="reboot=pci"
 ```
 
-## 开机后黑屏
+### 开机后黑屏
 
 编辑/etc/default/grub文件
 删除下面配置中的splash即可
