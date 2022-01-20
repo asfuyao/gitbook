@@ -22,6 +22,8 @@ GitHub地址：https://github.com/KhaosCoders/VSCodeBlockEndTag
 
 当选中部分内容时，当前文档其他相同部分同时高亮显示，方便直观的查找内容。
 
+VS2022下推荐用Word Highlight With Margin，远程桌面下的色彩比较好
+
 ## Codist
 
 Codist 是一个致力于为 C# 程序员提供更佳的编码体验和效率的 Visual Studio 扩展
