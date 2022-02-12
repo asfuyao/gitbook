@@ -18,17 +18,18 @@ tags:
 
 - [1. 修改root的bash设置](#1-修改root的bash设置)
 - [2. 修改源设置](#2-修改源设置)
-    - [2.1. 注释掉/etc/apt/sources.list.d/pve-enterprise.list里面的内容](#21-注释掉etcaptsourceslistdpve-enterpriselist里面的内容)
-    - [2.2. 更换源为国内源](#22-更换源为国内源)
+  - [2.1. 注释掉/etc/apt/sources.list.d/pve-enterprise.list里面的内容](#21-注释掉etcaptsourceslistdpve-enterpriselist里面的内容)
+  - [2.2. 更换源为国内源](#22-更换源为国内源)
 - [3. 打开Pci passthrough](#3-打开pci-passthrough)
-    - [3.1. 修改启动设置](#31-修改启动设置)
-    - [3.2. 增加模块](#32-增加模块)
+  - [3.1. 修改启动设置](#31-修改启动设置)
+  - [3.2. 增加模块](#32-增加模块)
 - [4. 移除登录时的未订阅弹窗提示](#4-移除登录时的未订阅弹窗提示)
 - [5. 调整LVM分区（可选）](#5-调整lvm分区可选)
-    - [5.1. 可选操作1](#51-可选操作1)
-    - [5.2. 可选操作2](#52-可选操作2)
+  - [5.1. 可选操作1](#51-可选操作1)
+  - [5.2. 可选操作2](#52-可选操作2)
 - [6. 在安装时选择控制磁盘空间大小](#6-在安装时选择控制磁盘空间大小)
 - [7. 使用zfs文件系统](#7-使用zfs文件系统)
+- [8. 导入img磁盘文件](#8-导入img磁盘文件)
 
 <!-- /TOC -->
 
@@ -254,4 +255,10 @@ zpool import rpool名称 新名称
 ```shell
 qm importdisk 101 vm-101-disk-0 local-zfs
 qm rescan
+```
+
+# 8. 导入img磁盘文件
+
+```shell
+qm importdisk 101 disk.img local-lvm --format qcow2
 ```
