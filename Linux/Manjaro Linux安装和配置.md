@@ -9,7 +9,7 @@
 ## 设置软件源（GUI）
 
 * 打开：软件包管理器 -> 首选项
-* 进入：官方软件仓库，使用镜像 下拉框选择：Russia，然后刷新镜像列表（注：China的几个源都是试过了，都缺少文件，也不知道咋搞的，所以选择了相对比较快的Russia源）
+* 进入：官方软件仓库，使用镜像 下拉框选择：China，然后刷新镜像列表
 
 * 进入：AUR，启用AUR支持，选中 检查更新
 
@@ -20,8 +20,8 @@
 ```shell
 # 更新镜像排名，会出现窗口提供指定区域数据源供选择
 sudo pacman-mirrors -i -c China -m rank
-# 更新数据源
-sudo pacman -Syy
+# 更新系统
+sudo pacman -Syu
 ```
 
 安装和设置AUR助手yay
@@ -48,13 +48,14 @@ yay -P -g
 ## 安装必备的软件包
 
 ```shell
-# 基本软件bao
-sudo pacman -S base-devel
+
+# 基本软件包
+sudo pacman -S yay vim git base-devel
 
 # 字体，安装后将系统字体设置为 文泉驿微米黑 和 文泉驿等宽微米黑，打开gnome-tweaks将字体设置为文泉驿
-sudo pacman -S wqy-microhei
+sudo pacman -S wqy-bitmapfont  wqy-microhei  wqy-microhei-lite wqy-zenhei
 
-# xfce4下fcitx5拼音输入法，需要注销重新进入后才能看到右下角的输入法图标
+# xfce4下fcitx5拼音输入法，需要注销重新进入后才能看到输入法图标
 sudo pacman -S fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk fcitx5-material-color fcitx5-qt
 # 创建fcitx5环境变量
 cat <<EOF > ~/.pam_environment
@@ -91,45 +92,42 @@ Layout=
 0=Default
 EOF
 
-# 注销或重启启用fcitx5
-# 修改拼音配置文件，或点击任务栏图标：配置->附加组件->拼音，点击设置图标
-vim ~/.config/fcitx5/conf/pinyin.conf
-
-# gnome下拼音，经测试会有选中剪切的问题
-# sudo pacman -S ibus-pinyin
-
-# 常用软件
-sudo pacman -S vim git base-devel
 # windows文件共享
 sudo pacman -S smbclient
+
 # v2ray
 yay -S v2ray-desktop
-# clash
-yay -S clashy-bin
+
 # wps
-yay -S wps-office-cn wps-office-mui-zh-cn wps-office-fonts wps-office-mime-cn ttf-wps-fonts
+yay -S wps-office-cn wps-office-mime-cn wps-office-fonts ttf-wps-fonts
+yay -S wps-office wps-office-mime wps-office-mui-zh-cn wps-office-fonts ttf-wps-fonts
+
 # markdown编辑器typora
 yay -S typora
+
 # docker
 sudo pacman -S docker docker-compose
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo usermod -aG docker <your-user>
+
 # ZeroTier
 sudo pacman -S zerotier-one
 sudo systemctl enable zerotier-one.service
 sudo systemctl start zerotier-one.service
 sudo zerotier-cli join NetworkID
-# remmina
-sudo pacman -S remmina freerdp
+
+# 远程桌面
+yay -S remmina remmina-plugin-rdesktop freerdp
+
 # vmware
 sudo pacman -S linux510-headers
 
 # chrome
 yay -S google-chrome
 
-# dotnet 5
-yay -S dotnet-sdk-bin
+# dotnet
+yay -S dotnet-sdk dotnet-sdk-3.1
 
 # visual code
 yay -S visual-studio-code-bin
@@ -142,12 +140,19 @@ yay -S rider
 ## 常用软件
 
 * htop 基于终端的彩色进程查看
+
 * tilix 一款终端软
+
 * xfce4-terminal
+
 * stacer 系统优化清理
+
 * thunar xfce4的文件管理器
+
 * neofetch linux配置显示
+
 * nodepadqq 文本编辑器
+<<<<<<< HEAD
 * remmina 远程桌面，附加软件：freerdp2-x11 remmina-plugin-exec remmina-plugin-kwallet remmina-plugin-nx remmina-plugin-spice remmina-plugin-www
 * zeal 电子文档
 * tabby ssh客户端集成sftp
@@ -155,6 +160,24 @@ yay -S rider
 * gnome-shell-extension-bing-wallpaper gnome的必应墙纸插件
 * deadbeef 可以播放cue、ape格式的音乐播放器
 * 
+=======
+
+* zeal 电子文档
+
+* tabby ssh客户端集成sftp
+
+* deadbeef 可以播放cue、ape格式的音乐播放器
+
+* gnome扩展：
+
+  gnome-shell-extension-appindicator
+  gnome-shell-extension-bing-wallpaper
+  gnome-shell-extension-clipboard-indicator
+  gnome-shell-extension-nightthemeswitcher
+  gnome-shell-extension-runcat-git
+  gnome-shell-extension-sound-output-device-chooser
+  gnome-shell-extension-system-monitor-git
+>>>>>>> 62df5712540fd4df9d5fd44ad7d8681bf0b9e2fa
 
 ## 常见问题
 
