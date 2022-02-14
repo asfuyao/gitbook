@@ -13,6 +13,8 @@ Comparetool=D:\DevTools\Beyond Compare\BCompare.exe
 
 将FastCopy放到Total Commander的Tools目录下
 
+FastCopy命令行帮助：https://fastcopy.jp/help/fastcopy_eng.htm#cmdline
+
 新建usercmd.ini（如果没有），输入下面内容：
 
 ```ini
