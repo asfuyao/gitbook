@@ -152,6 +152,15 @@ yay -S rider
 * neofetch linux配置显示
 
 * nodepadqq 文本编辑器
+<<<<<<< HEAD
+* remmina 远程桌面，附加软件：freerdp2-x11 remmina-plugin-exec remmina-plugin-kwallet remmina-plugin-nx remmina-plugin-spice remmina-plugin-www
+* zeal 电子文档
+* tabby ssh客户端集成sftp
+* freerdp 远程桌面客户端，比remmina多了多显示器支持
+* gnome-shell-extension-bing-wallpaper gnome的必应墙纸插件
+* deadbeef 可以播放cue、ape格式的音乐播放器
+* 
+=======
 
 * zeal 电子文档
 
@@ -168,6 +177,7 @@ yay -S rider
   gnome-shell-extension-runcat-git
   gnome-shell-extension-sound-output-device-chooser
   gnome-shell-extension-system-monitor-git
+>>>>>>> 62df5712540fd4df9d5fd44ad7d8681bf0b9e2fa
 
 ## 常见问题
 

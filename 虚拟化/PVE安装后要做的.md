@@ -29,7 +29,12 @@ tags:
   - [5.2. 可选操作2](#52-可选操作2)
 - [6. 在安装时选择控制磁盘空间大小](#6-在安装时选择控制磁盘空间大小)
 - [7. 使用zfs文件系统](#7-使用zfs文件系统)
+<<<<<<< HEAD
 - [8. 导入img磁盘文件](#8-导入img磁盘文件)
+=======
+- [8. 使用技巧](#8-使用技巧)
+  - [8.1. 导入img文件](#81-导入img文件)
+>>>>>>> 208bb1bad285c3693798fdb38f77b994f3fc021e
 
 <!-- /TOC -->
 
@@ -257,8 +262,17 @@ qm importdisk 101 vm-101-disk-0 local-zfs
 qm rescan
 ```
 
+<<<<<<< HEAD
 # 8. 导入img磁盘文件
 
 ```shell
 qm importdisk 101 disk.img local-lvm --format qcow2
+=======
+# 8. 使用技巧
+
+## 8.1. 导入img文件
+
+```shell
+qm importdisk 100 filename.img local-lvm
+>>>>>>> 208bb1bad285c3693798fdb38f77b994f3fc021e
 ```
