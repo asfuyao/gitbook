@@ -61,11 +61,15 @@ set interfaces ethernet eth3 description 'WAN'
 set interfaces ethernet eth3 duplex 'auto'
 set interfaces ethernet eth3 smp-affinity auto
 set interfaces ethernet eth3 speed 'auto'
-set interfaces ethernet eth3 pppoe 0 default-route 'auto'
-set interfaces ethernet eth3 pppoe 0 mtu '1492'
-set interfaces ethernet eth3 pppoe 0 name-server 'auto'
-set interfaces ethernet eth3 pppoe 0 user-id 'as18593089'
-set interfaces ethernet eth3 pppoe 0 password 'adsl12'
+set interfaces pppoe pppoe0 source-interface 'eth3'
+set interfaces pppoe pppoe0 default-route 'auto'
+set interfaces pppoe pppoe0 mtu 1492
+set interfaces pppoe pppoe0 authentication user 'as18593089'
+set interfaces pppoe pppoe0 authentication password 'adsl12'
+set interfaces pppoe pppoe0 connect-on-demand
+set interfaces pppoe pppoe0 firewall in name NET-IN
+set interfaces pppoe pppoe0 firewall local name NET-LOCAL
+set interfaces pppoe pppoe0 firewall out name NET-OUT
 commit;save
 #NAT 转发
 set nat source rule 100 outbound-interface 'pppoe0'
@@ -83,7 +87,7 @@ set interface ethernet eth0 policy route MSS
 set interface ethernet eth1 policy route MSS
 set interface ethernet eth2 policy route MSS
 commit;save
-## pppoe连接
+## pppoe连接，需退出配置配置模式
 connect interface pppoe0
 ## pppoe断开
 disconnect interface pppoe0
