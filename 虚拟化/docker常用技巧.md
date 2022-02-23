@@ -1,16 +1,31 @@
-# 进入容器内部
+<!-- TOC -->
+
+- [1. docker常用技巧](#1-docker常用技巧)
+  - [1.1. 进入容器内部](#11-进入容器内部)
+  - [1.2. 安装容器管理面板](#12-安装容器管理面板)
+  - [1.3. 镜像加速](#13-镜像加速)
+    - [1.3.1. 编辑daemon.json文件](#131-编辑daemonjson文件)
+    - [1.3.2. 重启docker](#132-重启docker)
+
+<!-- /TOC -->
+
+# 1. docker常用技巧
+
+## 1.1. 进入容器内部
 
 ```shell
 docker exec -it 容器名 /bin/bash
 ```
 
-# 安装容器管理工具
+## 1.2. 安装容器管理面板
 
 ```shell
-docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+docker run -d -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 ```
 
-# daemon.json
+## 1.3. 镜像加速
+
+### 1.3.1. 编辑daemon.json文件
 
 ```json
 {
@@ -21,7 +36,8 @@ docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /va
     ] //设置仓库镜像
 }
 ```
-# 重启docker
+
+### 1.3.2. 重启docker
 
 ```shell
 # 守护进程重启
@@ -30,5 +46,4 @@ systemctl daemon-reload
 # 重启docker服务
 systemctl restart docker
 service docker restart
-
 ```
