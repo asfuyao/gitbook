@@ -22,7 +22,7 @@ rm -rf navicat15-premium-cs
 ## 编译Keygen
 
 ```shell
-yay -S capstone rapidjson openssl
+yay -S capstone rapidjson openssl keystone
 git clone -b linux --single-branch https://github.com/lzscxb/navicat-keygen.git
 cd navicat-keygen-linux
 make all
