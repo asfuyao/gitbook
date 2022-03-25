@@ -19,6 +19,13 @@ sudo umount navicat15-premium-cs
 rm -rf navicat15-premium-cs
 ```
 
+方法三（推荐）：
+
+```shell
+yay -S navicat15-premium-cs
+# 安装后路径为：/opt/navicat15-premium-cs
+```
+
 ## 编译Keygen
 
 ```shell
@@ -33,6 +40,10 @@ make all
 ```shell
 cd navicat
 ./navicat-keygen/bin/navicat-patcher ./
+
+#方法三
+cd /opt/navicat15-premium-cs
+路径/navicat-keygen/bin/navicat-patcher ./
 ```
 
 ## 重新打包
