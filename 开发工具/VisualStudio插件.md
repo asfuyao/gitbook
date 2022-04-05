@@ -51,3 +51,11 @@ GitHub地址：https://github.com/codecadwallader/codemaid
 ## Code alignment
 
 代码对齐，不是格式化，对其是指把代码变量或赋值等语句对齐，说不明白了用就完了
+
+## xheme
+
+一款皮肤插件
+
+## GitHub Copilot
+
+AI代码编写工具
