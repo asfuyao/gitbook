@@ -12,7 +12,7 @@ winget install DevToys
 winget install PowerShell
 
 # PowerToys
-winget install PowerToys
+winget install Microsoft.PowerToys
 
 # 远程桌面工具
 winget install "Microsoft 远程桌面"
