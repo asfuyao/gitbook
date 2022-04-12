@@ -47,7 +47,12 @@ Edge浏览器：
             "breakOnLoad": true,
             "sourceMapPathOverrides": {
                 "webpack:///src/*": "${webRoot}/*"
-            }
+            },
+            "runtimeArgs": [ //运行时变量，可选
+                "--disable-web-security", //可以屏蔽浏览器跨域检查
+                "--user-data-dir=E:\\Temp\\msedge-browser",
+                "--disk-cache-dir=E:\\Temp\\msedge-browser\\cache"
+            ]
         }
     ]
 }
