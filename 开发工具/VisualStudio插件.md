@@ -18,11 +18,10 @@ GitHub地址：https://github.com/KhaosCoders/VSCodeBlockEndTag
 
 为输出添加颜色
 
-## Highlight all occurrences of selected word++
+## Word Highlight With Margin
 
 当选中部分内容时，当前文档其他相同部分同时高亮显示，方便直观的查找内容。
-
-VS2022下推荐用Word Highlight With Margin，远程桌面下的色彩比较好
+另一个可选的扩展：Highlight all occurrences of selected word++，根据个人喜好选择
 
 ## Codist
 
