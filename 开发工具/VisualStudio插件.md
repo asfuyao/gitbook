@@ -23,6 +23,8 @@ GitHub地址：https://github.com/KhaosCoders/VSCodeBlockEndTag
 当选中部分内容时，当前文档其他相同部分同时高亮显示，方便直观的查找内容。
 另一个可选的扩展：Highlight all occurrences of selected word++，根据个人喜好选择
 
+![image-20220413145059711](http://asfuyao.f3322.org:8089/2022/04/13/50b250c5cc0fd.png)
+
 ## Codist
 
 Codist 是一个致力于为 C# 程序员提供更佳的编码体验和效率的 Visual Studio 扩展
