@@ -1,23 +1,45 @@
 # nvm设置淘宝镜像
-## 设置nvm node_mirror:
 
+
+## 设置nvm镜像
+
+设置node
+
+```shell
 nvm node_mirror https://npm.taobao.org/mirrors/node/
-## 设置nvm npm_mirror:
-
 nvm npm_mirror https://npm.taobao.org/mirrors/npm/
+```
+
+
 
 ## 设置npm镜像
 
 淘宝镜像
+```shell
 npm config set registry https://registry.npm.taobao.org/
+```
+
 官方镜像
+```shell
 npm config set registry https://registry.npmjs.org/
+```
+
+
 
 ## 设置yarn镜像
 
-淘宝镜像
-yarn config set registry https://registry.npm.taobao.org/
-官方镜像
-yarn config set registry https://registry.yarnpkg.com
+如果无法运行yarn，需自行下面命令
 
-注：nvm安装路径不能带空格
+```shell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+淘宝镜像
+```shell
+yarn config set registry https://registry.npm.taobao.org/
+```
+
+官方镜像
+```shell
+yarn config set registry https://registry.yarnpkg.com
+```
