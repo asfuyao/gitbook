@@ -148,6 +148,10 @@ yay -S visual-studio-code-bin
 
 ## 常见问题
 
+### 挂载磁盘需要权限
+
+打开gnome-disks，选择要挂载的磁盘，编辑挂载选项，取消用户会话默认值选择，选择：系统启动时挂载、显示用户界面，其他默认即可
+
 ### 关机时间超长
 
 编辑/etc/default/grub文件，再该文件下查找GRUB_CMDLINE_LINUX=”“一行，修改为：
