@@ -136,6 +136,7 @@ yay -S visual-studio-code-bin
 
 ## 常用软件
 
+* vim-clipboard 支持剪贴板的vim
 * stacer 系统优化清理
 * neofetch linux配置显示
 * nodepadqq 文本编辑器
