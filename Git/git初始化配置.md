@@ -63,11 +63,21 @@ git config --global core.editor vim
 ## 1.5. 通过代理联网
 
 ```shell
-# 设置代理
-git config --global http.proxy 'http://127.0.0.1:1081'
-git config --global https.proxy 'http://127.0.0.1:1081'
+#设置全局代理
+git config --global http.proxy 'http://127.0.0.1:7890'
+git config --global https.proxy 'http://127.0.0.1:7890'
 
-# 取消代理
+#使用socks5代理的 例如ss，ssr 1080是windows下ss的默认代理端口,mac下不同，或者有自定义的，根据自己的改
+git config --global http.proxy 'socks5://127.0.0.1:7890'
+git config --global https.proxy 'socks5://127.0.0.1:7890'
+ 
+#只对github.com使用代理，其他仓库不走代理
+git config --global https.https://github.com.proxy 'http://127.0.0.1:7890'
+
+#取消github代理
+git config --global --unset https.https://github.com.proxy
+ 
+#取消全局代理
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
