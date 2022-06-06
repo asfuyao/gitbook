@@ -1,6 +1,5 @@
 # nvm设置淘宝镜像
 
-
 ## 设置nvm镜像
 
 设置node
@@ -10,7 +9,9 @@ nvm node_mirror https://npm.taobao.org/mirrors/node/
 nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 ```
 
+## nvm use
 
+Windows下需用管理员权限运行nvm use
 
 ## 设置npm镜像
 
@@ -23,8 +24,6 @@ npm config set registry https://registry.npm.taobao.org/
 ```shell
 npm config set registry https://registry.npmjs.org/
 ```
-
-
 
 ## 设置yarn镜像
 
