@@ -31,6 +31,7 @@ tags:
 - [7. 使用zfs文件系统](#7-使用zfs文件系统)
 - [8. 使用技巧](#8-使用技巧)
   - [8.1. 导入img文件](#81-导入img文件)
+  - [8.2. VMware转换到PVE](#82-vmware转换到pve)
 
 <!-- /TOC -->
 
@@ -264,3 +265,10 @@ qm rescan
 ```shell
 qm importdisk 100 filename.img local-lvm
 ```
+
+## 8.2. VMware转换到PVE
+
+* pve下创建虚拟机磁盘格式选qcow2
+* 上传vmware的磁盘.vmdk文件
+* 转换.vmdk到.qcow2，例：qemu-img convert -f vmdk old.vmdk -O qcow2 new.qcow2
+* 移动转换好的磁盘替换现有磁盘，例：mv new.qcow2 /var/lib/vz/images/110/vm-110-disk-0.qcow2
