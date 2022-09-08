@@ -3,7 +3,7 @@
 ```csharp
 public static void SqlBatchInsertByDataTable(DataTable dt, string tableName, string tableTypeName, SqlTransaction transaction)
 {            
-    string columnsStr = string.Join(",", dt.Columns.Cast<DataColumn>().ToList().Select(o => o.ColumnName).ToArray());
+    string columnsStr = string.Join(",", dt.Columns.Cast<DataColumn>().Select(o => o.ColumnName).ToArray());
 
     string sqlStr = $@"INSERT INTO {tableName} ({columnsStr})
                        SELECT {columnsStr} from @dataTable";
