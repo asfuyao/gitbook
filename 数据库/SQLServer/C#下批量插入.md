@@ -3,16 +3,10 @@
 ```csharp
 public static void SqlBatchInsertByDataTable(DataTable dt, string tableName, string tableTypeName, SqlTransaction transaction)
 {            
-    List<string> columns = new List<string>();
-    foreach(DataColumn columnName in dt.Columns)
-    {
-        columns.Add(columnName.ColumnName);
-    }
-    string columnsStr = string.Join(",", columns.ToArray());
+    string columnsStr = string.Join(",", dt.Columns.Cast<DataColumn>().ToList().Select(o => o.ColumnName).ToArray());
 
     string sqlStr = $@"INSERT INTO {tableName} ({columnsStr})
                        SELECT {columnsStr} from @dataTable";
-
 
     using (SqlCommand sqlCmd = new SqlCommand(sqlStr, transaction.Connection))
     {
