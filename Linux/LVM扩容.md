@@ -22,3 +22,15 @@ lvresize -l +100%FREE ubuntu-vg/ubuntu-lv  #扩展逻辑卷
 resize2fs -p /dev/ubuntu-vg/ubuntu-lv  #扩展文件系统
 ```
 
+
+
+# XFS
+
+```shell
+fdisk /dev/sda  # n 将增加的空间添加到新分区
+pvcreate /dev/sda3 # 创建物理卷
+vgextend almalinux /dev/sda3 # 向卷组中添加物理卷
+lvresize -l +100%FREE /dev/almalinux/root # 调整逻辑卷空间大小
+xfs_growfs /dev/almalinux/root # 扩展文件系统
+```
+
