@@ -41,3 +41,14 @@ $("#sb_brand").next().css("display", "none");
 $("#sb_brand").next().css("display", "inline-block");
 ```
 
+## CSS 控制input为readonly颜色
+
+vue项目放到src/assets/css目录下的css文件中，然后在main.js中引入css文件可使全局生效
+
+```css
+input[readonly] {
+    background-color: #f5f7fa;
+    color: #BEC2C9;
+}
+```
+
