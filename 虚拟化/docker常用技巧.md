@@ -47,3 +47,60 @@ systemctl daemon-reload
 systemctl restart docker
 service docker restart
 ```
+
+## 1.4. 导出容器到镜像
+
+### 1.4.1. 将容器打包成镜像
+
+命令：docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+options选项：
+
+* -a :提交的镜像作者；
+
+* -c :使用Dockerfile指令来创建镜像；
+
+* -m :提交时的说明文字；
+
+* -p :在commit时，将容器暂停。
+
+```shell
+# 例如：打包openwrt
+docker commit 26cd17e18f25 my_openwrt_buddha:V7.2022
+```
+
+  完成后，使用docker images可以看见该镜像
+
+### 1.4.2. 打包镜像
+
+命令：docker save [OPTIONS] IMAGE [IMAGE...]，这里的IMAGE是你刚打包的镜像，完成后会在当前目录生成一个tar文件。
+
+```shell
+# 例如：导出openwrt
+docker save -o my_openwrt_buddha.tar my_openwrt_buddha:V7.2022
+```
+
+### 1.4.3. 新服务器载入镜像
+
+命令：`docker load [OPTIONS]`
+-option选项：–input,-i 指定导入的文件
+–quiet,-q 精简输出信息
+
+```shell
+docker load --input my_jenkins.tar
+```
+
+完成后run容器即可
+
+## 1.5. 查看docker资源占用情况
+
+```shell
+# 实时查看
+docker stats
+
+# 使用ctop
+docker run --rm -ti \
+  --name=ctop \
+  --volume /var/run/docker.sock:/var/run/docker.sock:ro \
+  quay.io/vektorlab/ctop:latest
+```
+
