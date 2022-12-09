@@ -22,6 +22,9 @@ scoop config proxy 127.0.0.1:7890
 
 # 安装下载加速
 scoop install aria2
+# scoop aria2设置
+scoop config aria2-enabled false #关闭加速
+scoop config aria2-warning-enabled false #关闭警告
 ```
 
 ## 常用软件
@@ -29,7 +32,7 @@ scoop install aria2
 ```powershell
 # vscode
 scoop bucket add extras
-scoop install vscode
+scoop install vscode #安装后需要要导入注册表
 
 # Cascadia-Code
 scoop bucket add nerd-fonts
