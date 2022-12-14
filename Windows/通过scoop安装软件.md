@@ -25,11 +25,15 @@ scoop install aria2
 # scoop aria2设置
 scoop config aria2-enabled false #关闭加速
 scoop config aria2-warning-enabled false #关闭警告
+scoop config aria2-options @('--check-certificate=false') #关闭证书检查
 ```
 
 ## 常用软件
 
 ```powershell
+# 使用系统已经安装的7zip
+scoop config '7ZIPEXTRACT_USE_EXTERNAL' $true
+
 # vscode
 scoop bucket add extras
 scoop install vscode #安装后需要要导入注册表
