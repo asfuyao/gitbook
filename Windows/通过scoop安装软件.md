@@ -19,6 +19,9 @@ iwr -useb get.scoop.sh | iex
 ```powershell
 # 配置代理
 scoop config proxy 127.0.0.1:7890
+# 取消代理
+scoop config rm proxy
+
 
 # 安装下载加速
 scoop install aria2
