@@ -4,7 +4,9 @@
 
 * Windows下，创建%HOMEPATH%\pip\pip.ini
 
-写入下面内容：
+选择性写入下面内容：
+
+阿里源
 
 ```ini
 [global]
@@ -12,6 +14,16 @@ index-url=http://mirrors.aliyun.com/pypi/simple/
 
 [install]
 trusted-host=mirrors.aliyun.com
+```
+
+清华源
+
+```ini
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+[install]
+trusted-host = https://pypi.tuna.tsinghua.edu.cn
 ```
 
 # 安装并设置virtualenv虚拟环境
@@ -25,17 +37,6 @@ virtualenv venv
 
 # windows下激活虚拟环境
 venv\scripts\activate
-```
-
-# 安装工具
-
-```shell
-# 安装cnpm
-npm install -g cnpm
-# 安装yarn：
-cnpm install -g yarn
-# 设置yarn镜像
-yarn config set registry http://registry.npm.taobao.org/
 ```
 
 # 安装项目依赖
