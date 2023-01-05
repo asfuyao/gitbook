@@ -7,15 +7,38 @@ public static void SqlBatchInsertByDataTable(DataTable dt, string tableName, str
     string columnsStr = string.Join(",", dt.Columns.Cast<DataColumn>().Select(o => o.ColumnName).ToArray());
 
     string sqlStr = $@"INSERT INTO {tableName} ({columnsStr})
-                       SELECT {columnsStr} from @dataTable";
-
+                       SELECT {columnsStr} from @dataTable";	
+    
+    //数据插入
     using (SqlCommand sqlCmd = new SqlCommand(sqlStr, transaction.Connection))
     {
         SqlParameter sqlPar = sqlCmd.Parameters.AddWithValue("@dataTable", dt);
         sqlPar.SqlDbType = SqlDbType.Structured;
-        sqlPar.TypeName = tableTypeName;//表值参数名称
+        sqlPar.TypeName = "tableTypeName";//表值参数名称
         sqlCmd.Transaction = transaction;
         sqlCmd.ExecuteNonQuery();
+    }
+    
+    string sqlSelect = $@"
+                        SELECT DISTINCT a.CategoryCode
+                        FROM   dbo.MesMMCode a
+                        INNER  JOIN @dataTable b on b.MaterialCode = a.MaterialCode
+                        WHERE  NOT EXISTS ( SELECT *
+                                            FROM   dbo.MesMMCategory
+                                            WHERE  CategoryCode = a.CategoryCode )";
+    //数据读取，含事务
+    List<string> list = new List<string>();
+    using (SqlCommand sqlCmd = new SqlCommand(sqlSelect, transaction.Connection, transaction))
+    {
+        SqlParameter sqlPar = sqlCmd.Parameters.AddWithValue("@dataTable", dt);
+        sqlPar.SqlDbType = SqlDbType.Structured;
+        sqlPar.TypeName = "tableTypeName";//表值参数名称
+        var sdr = sqlCmd.ExecuteReader();
+        while (sdr.Read())
+        {
+            list.Add(sdr["列名"].ToString());
+        }
+        sdr.Close();
     }
 }
 ```

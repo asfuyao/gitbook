@@ -44,5 +44,8 @@ scoop install vscode #安装后需要要导入注册表
 # Cascadia-Code
 scoop bucket add nerd-fonts
 scoop install Cascadia-Code
+
+# VC++运行时(需要管理员权限)
+scoop install vcredist-aio
 ```
 
