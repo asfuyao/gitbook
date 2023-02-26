@@ -34,7 +34,10 @@ scoop config aria2-options @('--check-certificate=false') #关闭证书检查
 ## 常用软件
 
 ```powershell
-# 使用系统已经安装的7zip
+# 安装基础软件
+scoop install 7zip git sudo
+
+# 使用系统已经安装的7zip（可选）
 scoop config '7ZIPEXTRACT_USE_EXTERNAL' $true
 
 # vscode
