@@ -53,7 +53,7 @@ GitHub地址：https://github.com/codecadwallader/codemaid
 
 ## Add New File
 
-快速新建文件，快捷键是 Shift + F2
+快速新建文件，快捷键是 Shift + F2，新版VS已经自带此功能 Ctrl + Shift + A 在弹出窗口点左下角紧凑视图
 
 ## xheme
 
