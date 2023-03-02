@@ -51,6 +51,10 @@ GitHub地址：https://github.com/codecadwallader/codemaid
 
 代码对齐，不是格式化，对其是指把代码变量或赋值等语句对齐，说不明白了用就完了
 
+## Add New File
+
+快速新建文件，快捷键是 Shift + F2，新版VS已经自带此功能 Ctrl + Shift + A 在弹出窗口点左下角紧凑视图
+
 ## xheme
 
 一款皮肤插件
