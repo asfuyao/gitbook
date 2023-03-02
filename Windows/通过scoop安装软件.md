@@ -1,6 +1,6 @@
 # Scoop也许是Windows平台最好的软件包管理器
 
-## 安装Scoop
+## 安装设置
 
 ```powershell
 # Optional: Needed to run a remote script the first time
@@ -9,12 +9,30 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 # 设置安装路径
 $env:SCOOP='D:\scoop'
 [environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User')
-
-# 安装
-iwr -useb get.scoop.sh | iex
 ```
 
-## 国内镜像
+## 国外镜像安装
+
+```shell
+# 安装
+iwr -useb get.scoop.sh | iex
+
+# 切换国内镜像
+# 更换scoop的repo地址
+scoop config SCOOP_REPO 'https://gitee.com/glsnames/scoop-installer'
+# 拉取新库地址
+scoop update
+```
+
+## 国内镜像安装方法一
+
+```shell
+iwr -useb scoop.201704.xyz | iex
+```
+
+
+
+## 国内镜像安装方法二
 
 ```shell
 iwr -useb https://gitee.com/glsnames/scoop-installer/raw/master/bin/install.ps1 | iex
@@ -28,7 +46,6 @@ scoop config SCOOP_REPO 'https://gitee.com/glsnames/scoop-installer'
 scoop config proxy 127.0.0.1:7890
 # 取消代理
 scoop config rm proxy
-
 
 # 安装下载加速
 scoop install aria2
