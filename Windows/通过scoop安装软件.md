@@ -14,6 +14,13 @@ $env:SCOOP='D:\scoop'
 iwr -useb get.scoop.sh | iex
 ```
 
+## 国内镜像
+
+```shell
+iwr -useb https://gitee.com/glsnames/scoop-installer/raw/master/bin/install.ps1 | iex
+scoop config SCOOP_REPO 'https://gitee.com/glsnames/scoop-installer'
+```
+
 ## 下载加速和代理
 
 ```powershell
