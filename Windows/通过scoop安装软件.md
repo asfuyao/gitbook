@@ -19,6 +19,7 @@ iwr -useb get.scoop.sh | iex
 
 # 切换国内镜像
 # 更换scoop的repo地址
+scoop update
 scoop config SCOOP_REPO 'https://gitee.com/glsnames/scoop-installer'
 # 拉取新库地址
 scoop update
