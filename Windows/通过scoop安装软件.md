@@ -72,6 +72,15 @@ scoop install vscode #安装后需要要导入注册表
 scoop bucket add nerd-fonts
 scoop install Cascadia-Code
 
+# oh-my-posh，powershell最好去windows商店安装
+scoop install oh-my-posh
+# 安装后执行
+New-Item -Path $PROFILE -Type File -Force
+notepad $PROFILE
+# 在文本文件中输入下面配置，保存退出后再次打开powershell生效
+oh-my-posh init pwsh --config D:\scoop\apps\oh-my-posh\current\themes\stelbent-compact.minimal.omp.json | Invoke-Expression
+
+
 # VC++运行时(需要管理员权限)
 scoop install vcredist-aio
 ```
