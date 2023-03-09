@@ -24,16 +24,6 @@ sudo pacman-mirrors -i -c China -m rank
 sudo pacman -Syu
 ```
 
-安装和设置AUR助手yay
-
-```shell
-sudo pacman -S yay
-# 使用清华的AUR镜像(已经不好使了)
-# yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
-# 修改的配置文件位于 ~/.config/yay/config.json ，还可通过以下命令查看修改过的配置：
-yay -P -g
-```
-
 # 安装附加语言包
 
 * 进入 设置，在系统类设置中点击Manjaro Settings Maager（Manjaro设置管理器）
@@ -50,50 +40,16 @@ yay -P -g
 ```shell
 
 # 基本软件包
-sudo pacman -S yay vim git base-devel
+sudo pacman -S yay vim base-devel
 
 # 字体，安装后将系统字体设置为 文泉驿微米黑 和 文泉驿等宽微米黑，打开gnome-tweaks将字体设置为文泉驿
-sudo pacman -S wqy-bitmapfont  wqy-microhei  wqy-microhei-lite wqy-zenhei noto-fonts-cjk
+yay -S wqy-bitmapfont wqy-microhei wqy-zenhei noto-fonts-cjk otf-cascadia-code-nerd
 
-# xfce4下fcitx5拼音输入法，需要注销重新进入后才能看到输入法图标
-sudo pacman -S fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk fcitx5-material-color fcitx5-qt
-# 创建fcitx5环境变量
-cat <<EOF > ~/.pam_environment
-GTK_IM_MODULE DEFAULT=fcitx
-QT_IM_MODULE  DEFAULT=fcitx
-XMODIFIERS    DEFAULT=\@im=fcitx
-SDL_IM_MODULE DEFAULT=fcitx
-EOF
-# 创建配置文件目录
-mkdir ~/.config/fcitx5
-# 创建配置文件
-cat <<EOF > ~/.config/fcitx5/profile
-[Groups/0]
-# Group Name
-Name=Default
-# Layout
-Default Layout=us
-# Default Input Method
-DefaultIM=rime
+# fcitx5拼音输入法，需要注销重新进入后才能看到输入法图标
+yay -S fcitx5 fcitx5-configtool fcitx5-chinese-addons fcitx5-gtk fcitx5-pinyin-zhwiki fcitx5-qt fcitx5-table-extra fcitx5-table-other manjaro-asian-input-support-fcitx5
 
-[Groups/0/Items/0]
-# Name
-Name=keyboard-us
-# Layout
-Layout=
-
-[Groups/0/Items/1]
-# Name
-Name=rime
-# Layout
-Layout=
-
-[GroupOrder]
-0=Default
-EOF
-
-# windows文件共享
-sudo pacman -S smbclient
+# 新版本系统默认是zsh并且配置了powerlevel10k主题，修改主题配置
+p10k configure
 
 # v2ray
 yay -S v2ray-desktop
@@ -102,17 +58,14 @@ yay -S v2ray-desktop
 yay -S wps-office-cn wps-office-mime-cn wps-office-fonts ttf-wps-fonts
 yay -S wps-office wps-office-mime wps-office-mui-zh-cn wps-office-fonts ttf-wps-fonts
 
-# markdown编辑器typora
-yay -S typora
-
 # docker
-sudo pacman -S docker docker-compose
+yay -S docker docker-compose
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo usermod -aG docker <your-user>
 
 # ZeroTier
-sudo pacman -S zerotier-one
+yay -S zerotier-one
 sudo systemctl enable zerotier-one.service
 sudo systemctl start zerotier-one.service
 sudo zerotier-cli join NetworkID
@@ -120,8 +73,9 @@ sudo zerotier-cli join NetworkID
 # 远程桌面
 yay -S remmina remmina-plugin-rdesktop freerdp
 
-# vmware
-sudo pacman -S linux510-headers
+# vmware需要安装内核header包，找到对应的内核包，例如内核版本为：6.1.12
+yay -Ss headers |grep 6.1.12
+yay -S linux61-headers
 
 # chrome
 yay -S google-chrome
