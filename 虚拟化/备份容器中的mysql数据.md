@@ -22,7 +22,7 @@ password=密码
 # 备份指定数据到压缩文件
 mysqldump -u$username -p$password --databases $databasename | gzip >> $bak_path/$databasename$bak_time.sql.gz
 
-for bakfile in `find $bak_path/ -mtime +$expire_day -type f -name "*.sql"`
+for bakfile in `find $bak_path/ -mtime +$expire_day -type f -name "*.sql.gz"`
 do
   rm -f $bakfile
 done
