@@ -40,3 +40,4 @@ sudo docker cp ./mysqlbak.sh 容器ID:/bin/mysqlbak.sh
 ```shell
 sudo docker exec -it 容器ID /bin/sh /bin/mysqlbak.sh 数据库名
 ```
+* 注意：如果上面命令放在crontab中执行，需要去掉-it参数，因为linux执行定时任务时没有终端设备，加上-it参数后会出现错误提示：the input device is not a TTY导致任务无法执行
