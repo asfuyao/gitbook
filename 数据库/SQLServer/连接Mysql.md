@@ -7,6 +7,7 @@
 * 管理工具 -> ODBC数据源 -> 系统DSN -> 添加
 * 选择 MySQL ODBC 8.0 Unicode Driver
 * 填写服务器地址、用户名、密码、默认数据库等信息
+* Details -> Cursors/Results，选中Return matched rows intead of affected rows
 
 # 3. 配置链接服务器
 
@@ -16,7 +17,15 @@
 * 常规：数据源，填写刚刚创建的ODBC系统DSN名称
 * 安全性：选择使用此安全上下文建立连接，填写登录用户和密码
 
-# 4. 使用方法
+# 4. 配置链接服务器（不需要配置DSN）
+
+* SSMS -> 服务器对象 -> 链接服务器 -> 新建链接服务器
+* 常规：其他数据源，选择：Microsoft OLE DB Provider for ODBC Drivers
+* 常规：产品名称，填写：MYSQL_DBLINK
+* 常规：访问接口字符串，Driver={ MySQL ODBC 8.0 Unicode Driver };Server=192.168.1.103;Port=30000;Database=momnext; User=root;Password=momnext123456;Option=3;
+* 安全性：选择使用此安全上下文建立连接，填写登录用户和密码
+
+# 5. 使用方法
 
 ```sql
 –查询
