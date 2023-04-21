@@ -14,19 +14,24 @@ tags:
 
 # 创建docker-compose.yml
 
-```shell
+```yml
 version: "2"
 
 services:
-
   gogs:
-    image: docker.io/gogs/gogs:latest
+    image: gogs/gogs
     container_name: gogs
     ports:
-      - "10022:22"
-      - "10080:3000"
+      - "20022:22"
+      - "23000:3000"
+    environment:
+      RUN_CROND:true
+      BACKUP_INTERVAL:12h
+      BACKUP_RETENTION:90d
     volumes:
       - ./data:/data
+      - ./backup:/backup
+      - /etc/localtime:/etc/localtime:ro
     restart: always
 ```
 
@@ -40,7 +45,7 @@ docker-compose up -d
 
 - 进入http://IP:10080
 - 域名：主机IP
-- SSH端口号：映射后的端口号10022，同时选中使用内置SSH服务器
+- SSH端口号：映射后的端口号10022，不要选中使用内置SSH服务器（这个会导致sshkey无法自动增加到authorized_keys）
 - HTTP端口号：默认的3000
 - 应用URL：映射和的端口号，http://主机IP:10080
 
@@ -71,4 +76,4 @@ denied，这时可以进入容器内部看看/home/git/.ssh/目录内的authoriz
 command="/app/gogs/gogs serv key-1 --config='/data/gogs/conf/app.ini'",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCsclTsS3Pru9y3awEmo4nc9QKDi9wZVfAPlQO49V2XfDkMD++KK6EQajwbB+dCFpSBTgPBGCKSKVBZbmL3LCQsrqpR/gIWK3OTwQLKlkNpWHpzoJSsnflypwYn3IAqqVoN7em3P9AcxHmMzn4cJPjVLVJdTkoXPB7NEjzXeVVTGyyjd2pgo7mfkYF74n4re0g73II/IkHUibGmDXz6gjim9VNiRimJQ1L2Vdw7WMfxWVPv9FhxqC/KD9DYH/vGU18GWgWZT371OLi8SvoX2lAPbHfACrd5uHLFL3FzNv2/nnJy//SLTjAA7JMMhiDSQu84jkBpO7SgzjYfosLIQwhzuRlcDCb5yMGKAW112oAPV+rE9W0fMvCo3DLySEsEBCl9hPpaDBzHcH0kxDGH07HIsLhHIPfnFrTMf6TlHmkxBRvTtm6P7bISuhLR7INbU1KtF8ukWYlHL9NrP8pf8yrV0HmbOYD943gP4arDZBmSJA8a0rn/Ei6RzsDT2GNBsT0= asfuyao@qq.com
 ```
 
-这个问题的产生原因不知道是什么情况，不理解为什么没有自动添加这个文件，有时候又好使可以自动添加
+这个问题的产生原因是由于选中了使用内置ssh造成的
