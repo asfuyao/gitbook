@@ -86,3 +86,19 @@ oh-my-posh init pwsh --config D:\scoop\apps\oh-my-posh\current\themes\stelbent-c
 # VC++运行时(需要管理员权限)
 scoop install vcredist-aio
 ```
+
+# 重装系统后还原
+
+* 1.修改环境变量,在用户环境变量中，新建一个名为SCOOP的变量，值为当前scoop文件夹的地址D:\scoop，在环境变量path中新增一条%SCOOP%\shims
+
+* 2.允许脚本执行:
+
+```shell
+set-executionpolicy remotesigned -s currentuser
+```
+
+* 3.powershell中运行：`scoop reset *`，即可恢复所有软件的图标和环境变量
+
+* 4.很多软件的配置文件在%USERPROFILE%中，如：.ssh、.config等需要在重装系统前北方出来，重装系统后复制回去即可
+
+* 5.有些软件需要导入注册表或执行初始化脚本，如：vscode要导入右键菜单注册表文件
