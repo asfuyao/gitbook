@@ -1,29 +1,34 @@
 <!-- TOC -->
 
-- [1. GridControl](#1-gridcontrol)
-    - [1.1. 显示小计项目](#11-显示小计项目)
-    - [1.2. GridView单元格内容换行](#12-gridview单元格内容换行)
-    - [1.3. GridControl内容打印](#13-gridcontrol内容打印)
-    - [1.4. 合并单元格](#14-合并单元格)
-    - [1.5. 隔行显示不同颜色](#15-隔行显示不同颜色)
-    - [1.6. GridView自动列宽](#16-gridview自动列宽)
-    - [1.7. 显示横线滚动条](#17-显示横线滚动条)
-    - [1.8. 复制单元格内容到剪贴板](#18-复制单元格内容到剪贴板)
-    - [1.9. 获取选择行的某列内容](#19-获取选择行的某列内容)
-    - [1.10. 显示过滤面板](#110-显示过滤面板)
-    - [1.11. 显示行号](#111-显示行号)
-    - [1.12. 在GridView中增加行号](#112-在gridview中增加行号)
-    - [1.13. BarManager中交点漂移问题](#113-barmanager中交点漂移问题)
-    - [1.14. 显示格式说明](#114-显示格式说明)
-        - [1.14.1. 数字](#1141-数字)
-        - [1.14.2. 日期](#1142-日期)
-        - [1.14.3. 格式设置](#1143-格式设置)
+- [1. 项目发布](#1-项目发布)
+- [2. GridControl](#2-gridcontrol)
+  - [2.1. 显示小计项目](#21-显示小计项目)
+  - [2.2. GridView单元格内容换行](#22-gridview单元格内容换行)
+  - [2.3. GridControl内容打印](#23-gridcontrol内容打印)
+  - [2.4. 合并单元格](#24-合并单元格)
+  - [2.5. 隔行显示不同颜色](#25-隔行显示不同颜色)
+  - [2.6. GridView自动列宽](#26-gridview自动列宽)
+  - [2.7. 显示横线滚动条](#27-显示横线滚动条)
+  - [2.8. 复制单元格内容到剪贴板](#28-复制单元格内容到剪贴板)
+  - [2.9. 获取选择行的某列内容](#29-获取选择行的某列内容)
+  - [2.10. 显示过滤面板](#210-显示过滤面板)
+  - [2.11. 显示行号](#211-显示行号)
+  - [2.12. 在GridView中增加行号](#212-在gridview中增加行号)
+  - [2.13. BarManager中交点漂移问题](#213-barmanager中交点漂移问题)
+  - [2.14. 显示格式说明](#214-显示格式说明)
+    - [2.14.1. 数字](#2141-数字)
+    - [2.14.2. 日期](#2142-日期)
+    - [2.14.3. 格式设置](#2143-格式设置)
 
 <!-- /TOC -->
+# 1. 项目发布
 
-# 1. GridControl
+nuget安装组件：EmptyLicensesLicx，能够自动清空licenses.licx文件
+网站：https://github.com/augustoproiete/EmptyLicensesLicx
 
-## 1.1. 显示小计项目
+# 2. GridControl
+
+## 2.1. 显示小计项目
 
 ```csharp
 //可放到FormLoad事件中执行
@@ -55,7 +60,7 @@ if (gridView != null)
 }
 ```
 
-## 1.2. GridView单元格内容换行
+## 2.2. GridView单元格内容换行
 
 ```csharp
 {
@@ -71,7 +76,7 @@ if (gridView != null)
 
 
 
-## 1.3. GridControl内容打印
+## 2.3. GridControl内容打印
 
 ```csharp
 private void GridPrint()
@@ -133,34 +138,34 @@ void link_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
 }
 ```
 
-## 1.4. 合并单元格
+## 2.4. 合并单元格
 
 ```csharp
 gridView.OptionsView.AllowCellMerge = true; //设置允许合并单元格，整体控制选项
 gridView.Columns["列名"].OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False; //设置不想合并的具体列
 ```
 
-## 1.5. 隔行显示不同颜色
+## 2.5. 隔行显示不同颜色
 
 ```csharp
 gridView.OptionsView.EnableAppearanceEvenRow = true;  //允许偶数行显示背景色
 gridView.OptionsView.EnableAppearanceOddRow = true;  //允许奇数行显示背景色
 ```
 
-## 1.6. GridView自动列宽
+## 2.6. GridView自动列宽
 
 ```csharp
 gridview1.BestFitColumns();
 ```
 
-## 1.7. 显示横线滚动条
+## 2.7. 显示横线滚动条
 
 ```csharp
 //由于设置了自动列宽因此不会出现滚动条，将自动列宽设置为false即可
 gridView1.OptionsView.ColumnAutoWidth = false;
 ```
 
-## 1.8. 复制单元格内容到剪贴板
+## 2.8. 复制单元格内容到剪贴板
 
 ```csharp
 private void gridView1_KeyDown(object sender, KeyEventArgs e)
@@ -173,13 +178,13 @@ private void gridView1_KeyDown(object sender, KeyEventArgs e)
 }
 ```
 
-## 1.9. 获取选择行的某列内容
+## 2.9. 获取选择行的某列内容
 
 ```csharp
 gridView1.GetFocusedRowCellValue(gridView1.Columns["列名"]).ToString()
 ```
 
-## 1.10. 显示过滤面板
+## 2.10. 显示过滤面板
 
 ```csharp
 //显示过滤面板
@@ -188,7 +193,7 @@ gridView.OptionsView.ShowAutoFilterRow = true;
 gridView.Columns["列名"].OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Equals;
 ```
 
-## 1.11. 显示行号
+## 2.11. 显示行号
 
 ```csharp
 //在FormLoad中设置行号宽
@@ -207,7 +212,7 @@ private void GridViewDrawRowNumber(object sender, DevExpress.XtraGrid.Views.Grid
 }
 ```
 
-## 1.12. 在GridView中增加行号
+## 2.12. 在GridView中增加行号
 
 ```csharp
 //假设第一列为序号列，可在sql语句中增加一个值为空字符串的列，然后在数据填充后用下面语句增加行号
@@ -217,14 +222,14 @@ for (int i = 0; i < gridView1.RowCount; i++)
 }
 ```
 
-## 1.13. BarManager中交点漂移问题
+## 2.13. BarManager中交点漂移问题
 
 在BarManger中的按钮前面添加RadioGroup控件后点击选择发生焦点漂移的问题，焦点飘到后面的按钮上了，解决办法是把RadioGroup后面的按钮设置为Begin a Group。
 目前测试发现这个办法不一定好用，原因不明
 
-## 1.14. 显示格式说明
+## 2.14. 显示格式说明
 
-### 1.14.1. 数字
+### 2.14.1. 数字
 
 字母后数字表示保留几位小数，无数字默认为2
 
@@ -234,14 +239,14 @@ for (int i = 0; i < gridView1.RowCount; i++)
 * P,P0,P1,P2,P3，百分比，直接在数字后面添加百分号
 * p,p0,p1,p2,p3，百分比，值为小数，乘100后添加百分号
 
-### 1.14.2. 日期
+### 2.14.2. 日期
 
 * G yyyy/MM/dd hh:mm:ss
 * g yyyy/MM/dd hh:mm
 * T hh:mm:ss
 * t hh:mm
 
-### 1.14.3. 格式设置
+### 2.14.3. 格式设置
 
 ```csharp
 //设置列显示格式
