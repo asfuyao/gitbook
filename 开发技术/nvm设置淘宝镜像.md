@@ -5,8 +5,8 @@
 设置node
 
 ```shell
-nvm node_mirror https://npm.taobao.org/mirrors/node/
-nvm npm_mirror https://npm.taobao.org/mirrors/npm/
+nvm node_mirror https://npmmirror.com/mirrors/node/
+nvm npm_mirror https://npmmirror.com/mirrors/npm/
 ```
 
 ## nvm use
@@ -17,7 +17,7 @@ Windows下需用管理员权限运行nvm use
 
 淘宝镜像
 ```shell
-npm config set registry https://registry.npm.taobao.org/
+npm config set registry https://registry.npmmirror.com
 ```
 
 官方镜像
@@ -35,7 +35,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 淘宝镜像
 ```shell
-yarn config set registry https://registry.npm.taobao.org/
+yarn config set registry https://registry.npmmirror.com
 ```
 
 官方镜像
