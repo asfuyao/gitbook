@@ -80,3 +80,8 @@ services:
 ## 上传nuget包
 
 dotnet nuget push -s http://服务器IP:5555/v3/index.json -k WfBieNith!GFkLL5V3h0KoOClILE Package.1.0.0.nupkg
+
+# 在VS中添加自建nuget源
+
+工具 -> 选项 -> NuGet包管理器 -> 程序包源
+添加新的源：http://服务器IP:5555/v3/index.json
