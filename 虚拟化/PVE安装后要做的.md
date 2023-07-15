@@ -1,41 +1,6 @@
----
-layout:     post
-title:      PVE安装后要做的
-subtitle:   虚拟化
-date:       2019-05-31
-author:     Winds
-header-img: img/post-bg-hacker.jpg
-catalog: true
-tags:
-    - Linux
-    - PVE
-    - Debian
----
+# pve安装设置(8.0适用)
 
->Linux 知识库
-
-<!-- TOC -->
-
-- [1. 修改root的bash设置](#1-修改root的bash设置)
-- [2. 修改源设置](#2-修改源设置)
-  - [2.1. 注释掉/etc/apt/sources.list.d/pve-enterprise.list里面的内容](#21-注释掉etcaptsourceslistdpve-enterpriselist里面的内容)
-  - [2.2. 更换源为国内源](#22-更换源为国内源)
-- [3. 打开Pci passthrough](#3-打开pci-passthrough)
-  - [3.1. 修改启动设置](#31-修改启动设置)
-  - [3.2. 增加模块](#32-增加模块)
-- [4. 移除登录时的未订阅弹窗提示](#4-移除登录时的未订阅弹窗提示)
-- [5. 调整LVM分区（可选）](#5-调整lvm分区可选)
-  - [5.1. 可选操作1](#51-可选操作1)
-  - [5.2. 可选操作2](#52-可选操作2)
-- [6. 在安装时选择控制磁盘空间大小](#6-在安装时选择控制磁盘空间大小)
-- [7. 使用zfs文件系统](#7-使用zfs文件系统)
-- [8. 使用技巧](#8-使用技巧)
-  - [8.1. 导入img文件](#81-导入img文件)
-  - [8.2. VMware转换到PVE](#82-vmware转换到pve)
-
-<!-- /TOC -->
-
-# 1. 修改root的bash设置
+## 修改root的bash设置
 
 去掉~/.bashrc里下面内容的注释
 
@@ -53,76 +18,91 @@ tags:
  alias mv='mv -i'
 ```
 
+## 修改源设置
 
-# 2. 修改源设置
+* 注释掉/etc/apt/sources.list.d/pve-enterprise.list里面的内容
+* 更换源为国内源(pve8)
 
-## 2.1. 注释掉/etc/apt/sources.list.d/pve-enterprise.list里面的内容
-
-## 2.2. 更换源为国内源
-
-```sh
-#163源
-deb http://mirrors.163.com/debian/ buster main non-free contrib
-deb http://mirrors.163.com/debian/ buster-updates main non-free contrib
-deb http://mirrors.163.com/debian/ buster-backports main non-free contrib
-deb http://mirrors.163.com/debian-security/ buster/updates main non-free contrib
-
-#阿里源
-deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
-deb http://mirrors.aliyun.com/debian-security buster/updates main
-deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
-deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
-
-#清华源
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
-
-#非订阅源
-cat <<EOF >> /etc/apt/sources.list.d/pve-no-subscription.list
-deb https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian buster pve-no-subscription
+```shell
+cat > /etc/apt/sources.list <<EOF
+deb https://mirrors.huaweicloud.com/debian/ bookworm main non-free contrib
+# deb-src https://mirrors.huaweicloud.com/debian/ bookworm main non-free contrib
+deb https://mirrors.huaweicloud.com/debian-security/ bookworm-security main
+# deb-src https://mirrors.huaweicloud.com/debian-security/ bookworm-security main
+deb https://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free contrib
+# deb-src https://mirrors.huaweicloud.com/debian/ bookworm-updates main non-free contrib
+deb https://mirrors.huaweicloud.com/debian/ bookworm-backports main non-free contrib
+# deb-src https://mirrors.huaweicloud.com/debian/ bookworm-backports main non-free contrib
 EOF
 
-#Ceph源
-cat <<EOF >> /etc/apt/sources.list.d/ceph.list
-deb http://mirrors.ustc.edu.cn/proxmox/debian/ceph-luminous buster main
-EOF
+# 下载秘钥
+wget http://mirrors.ustc.edu.cn/proxmox/debian/proxmox-release-bookworm.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
+# 添加非订阅源
+echo "deb http://mirrors.ustc.edu.cn/proxmox/debian/pve bookworm pve-no-subscription" >/etc/apt/sources.list.d/pve-no-subscription.list
+
+# 更新系统
+apt update -y && apt dist-upgrade -y
 ```
 
-# 3. 打开Pci passthrough
+## 移除未使用的Linux内核
+
+```shell
+git clone https://github.com/jordanhillis/pvekclean.git
+cd pvekclean
+chmod +x pvekclean.sh
+```
+
+## 安装常用软件
+
+```shell
+apt install vim lrzsz unzip net-tools curl screen uuid-runtime git -y
+```
+
+## 安装并设置NTP服务
+
+```shell
+vim /etc/chrony/chrony.conf
+# 新增下面的server
+
+# Aliyun NTP
+server ntp1.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp2.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp3.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp4.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp5.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp6.aliyun.com minpoll 4 maxpoll 10 iburst
+server ntp7.aliyun.com minpoll 4 maxpoll 10 iburst
+```
+
+## 打开Pci passthrough
 
 * [官方说明网址](https://pve.proxmox.com/wiki/Pci_passthrough)
 
 * 前提是CPU支持，pve官网说只有部分i7和大部分志强E3、E5支持
 
-## 3.1. 修改启动设置
+### 修改启动设置
 
 编辑grub
 
-`vi /etc/default/grub`
+ `vi /etc/default/grub`
 
 修改这行
 
-`GRUB_CMDLINE_LINUX_DEFAULT="quiet"`
+ `GRUB_CMDLINE_LINUX_DEFAULT="quiet"`
 
 改为
 
-`GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on"`
+ `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on"`
 
 更新引导记录
 
-`update-grub`
+ `update-grub`
 
-## 3.2. 增加模块
+### 增加模块
 
 修改配置文件
 
-`vi /etc/modules`
+ `vi /etc/modules`
 
 添加下面内容：
 
@@ -133,37 +113,24 @@ vfio_pci
 vfio_virqfd
 ```
 
-# 4. 移除登录时的未订阅弹窗提示
+## 移除登录时的未订阅弹窗提示
 
-* 没有订阅企业版每次登录Web管理时都会出现一个“No Valid Subscription(无有效订阅)”的提示，需要修改一个文件就可以去掉这个提示
-* 5.1版的文件为“/usr/share/pve-manager/js/pvemanagerlib.js”，5.3版的文件换成了“/usr/share/javascript/proxmox–widget–toolkit/proxmoxlib.js”
-* 修改一下其中的认购状态检查的判断代码即可
-* 找到`if (data.status !== ‘Active’) {`，将其修改为`if (false) {`
-* 也可以在shell下通过一个命令来完成这个修改
-
-5.1版
-
-`/usr/share/pve-manager/js/pvemanagerlib.js`
+Proxmox VE 6.3 / 6.4 / 7.0 / 7.1 / 7.2 / 7.3 / 7.4 / 8.0 去掉未订阅的提示
 
 ```shell
-sed -i_orig "s/data.status !== 'Active'/false/g" /usr/share/pve-manager/js/pvemanagerlib.js && systemctl restart pveproxy.service
+sed -i_orig "s/data.status === 'Active'/true/g" /usr/share/pve-manager/js/pvemanagerlib.js
+sed -i_orig "s/if (res === null || res === undefined || \!res || res/if(/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+sed -i_orig "s/.data.status.toLowerCase() !== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+systemctl restart pveproxy
 ```
 
-5.3版
-
-`/usr/share/javascript/proxmox–widget–toolkit/proxmoxlib.js`
-
-```
-sed -i_orig "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
-```
-
-# 5. 调整LVM分区（可选）
+## 调整LVM分区（可选）
 
 * PVE的LVM有两种，Thin和非Thin，LVM-Thin只能存放Disk image和Container，LVM能够存放更多类型的内容但缺点是：只能使用raw磁盘格式、不能创建快照、必须完整分配磁盘空间
 * 安装系统时会自动创建LVM和LVM-Thin，其中LVM是root分区通常占用整个磁盘的10%左右，剩余部分除了分给swap分区（大小和内存相等）都给了LVM-Thin
 * 可以通过LVM管理命令将LVM-Thin容量都分给LVM，或删除LVM-Thin重新创建新的LVM分区
 
-## 5.1. 可选操作1
+### 可选操作1
 
 将LVM-Thin分区删除，容量分给LVM
 
@@ -181,11 +148,12 @@ echo 扩展文件系统
 resize2fs -p /dev/pve/root
 ```
 
-## 5.2. 可选操作2
+### 可选操作2
 
 将LVM-Thin分区删除，创建新的LVM
 
 * 格式化后返回web控制台，在Datacenter节点的Storage菜单中添加新的Directory，Directory填/mnt/data，ID随便填，保持后就可以在左侧树菜单中看到新加的存储
+
 ```shell
 echo 删除LVM-Thin分区，该分区的默认路径是/dev/pve/data，可通过lvdisplay命令查看
 lvremove /dev/pve/data
@@ -222,13 +190,13 @@ lvmthin: local-lvm
          content rootdir,images
 ```
 
-# 6. 在安装时选择控制磁盘空间大小
+## 在安装时选择控制磁盘空间大小
 
 * 安装时选择hdsize，指定pve的LVM卷的总体大小，保留未分配空间
 * 未分配空间可以通过fdisk命令来创建新的分区或用LVM管理命令创建卷
 * fdisk创建的新分区可以格式化为ext4、xfs、btrfs，并挂接到系统中，方法查考“可选操作2”中的格式化之后的步骤
 
-# 7. 使用zfs文件系统
+## 使用zfs文件系统
 
 * fdisk创建的新分区也可以创建zfs系统，使用命令：`zpool create -f -o ashift=12 存储池名 /dev/sda4`
 * 查看zfs存储池：`zpool list`
@@ -258,15 +226,16 @@ zpool import rpool名称 新名称
 qm importdisk 101 vm-101-disk-0 local-zfs
 qm rescan
 ```
-# 8. 使用技巧
 
-## 8.1. 导入img文件
+## 使用技巧
+
+### 导入img文件
 
 ```shell
 qm importdisk 100 filename.img local-lvm
 ```
 
-## 8.2. VMware转换到PVE
+### VMware转换到PVE
 
 * pve下创建虚拟机磁盘格式选qcow2
 * 上传vmware的磁盘.vmdk文件
