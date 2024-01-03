@@ -137,7 +137,7 @@ if (!t.Wait(Timeout, TaskCancellationToken.Token))
 * 其它依赖：
 
 ```csharp
-async Task Main()
+void Main()
 {
     List<Task> t = new List<Task>();
     for (int i=0;i<10;i++)
@@ -145,6 +145,7 @@ async Task Main()
         t.Add(RunSomething(i));
     }
     await Task.WhenAll(t);
+    //Task.WaitAll(t.ToArray()); 可选运行方式，与上条语句等价
 }
 async Task RunSomething(int i)
 {
@@ -259,6 +260,37 @@ namespace WebPrintService
             sb.AppendLine("***************************************************************");
             return sb.ToString();
         }
+    }
+}
+```
+
+## 限制同步运行Task的数量
+
+* 运行环境：.NET Framwork 4.6.2
+* Nuget包依赖：
+* 其它依赖：
+
+```csharp
+void Main()
+{
+    var allTasks = Enumerable.Range(1, 100).Select(id => DoWorkAsync(id));
+    //await Task.WhenAll(tasks);
+    Task.WaitAll(allTasks.ToArray());
+}
+
+readonly SemaphoreSlim _mutex = new SemaphoreSlim(5); //限制任务数量
+
+async Task DoWorkAsync(int id)
+{
+    await _mutex.WaitAsync();
+    try
+    {
+        await Task.Delay(20000);
+        Console.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} Task {id} is finished");
+    }
+    finally
+    {
+        _mutex.Release();
     }
 }
 ```
