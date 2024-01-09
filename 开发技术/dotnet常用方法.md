@@ -294,3 +294,26 @@ async Task DoWorkAsync(int id)
     }
 }
 ```
+
+## 通过互斥锁将并行操作改为串行
+
+* 运行环境：.NET Framwork 4.6.2
+* Nuget包依赖：
+* 其它依赖：
+
+```csharp
+private static Mutex mutex = new Mutex();
+
+public string getSerial()
+{
+    mutex.WaitOne();
+
+    // 执行获取序号方法
+    // Task.Delay(5000).Wait(); //模拟任务执行
+
+    mutex.ReleaseMutex();
+
+    return "返回序号";
+}
+```
+
