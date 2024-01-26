@@ -19,3 +19,11 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Aspnet_regiis.exe -ga 'IIS APPPO
 # 32位
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\Aspnet_regiis.exe -ga 'IIS APPPOOL\XXXX'
 ```
+
+# ASP.NET网站文件夹授权
+
+需要给目录授予Users组的读写权限
+
+```shell
+Icacls 目录名 /t /grant Users:(oi)(ci)(M)
+```
