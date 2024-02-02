@@ -73,3 +73,60 @@ set-executionpolicy remotesigned -s currentuser
 * 4. 很多软件的配置文件在%USERPROFILE%中，如：.ssh、.config等需要在重装系统前北方出来，重装系统后复制回去即可
 
 * 5. 有些软件需要导入注册表或执行初始化脚本，如：vscode要导入右键菜单注册表文件
+
+## 一些软件
+
+|        软件名        |                             说明                             |
+| :------------------: | :----------------------------------------------------------: |
+|       audacity       |    An easy-to-use, multi-track audio editor and recorder     |
+|       calibre        |           Powerful and easy to use e-book manager            |
+|       captura        |  Capture Screen, Audio, Cursor, Mouse Clicks and Keystrokes  |
+|       deskreen       |  Turn any device into a secondary screen for your computer   |
+|        ditto         |                An enhanced clipboard manager                 |
+|         dia          |                       Drawing software                       |
+|       fiddler        | The free web debugging proxy for any browser, system or platform |
+|    gitextensions     | A graphical user interface for Git that allows you to control Git without using the commandline |
+|      handbrake       | A tool for converting video from nearly any format to a selection of modern, widely supported codecs |
+|       heidisql       | See and edit data and structures from computers running one of the database systems MariaDB, MySQL, Microsoft SQL or PostgreSQL |
+|       jpegview       | Fast and highly configurable image viewer/editor with a minimal GUI |
+|     musicplayer2     | Audio player which supports music collection playback, lyrics display, format conversion and many other functions |
+|       coretemp       |  Monitor processor temperature and other vital information   |
+|         gimp         |                GNU Image Manipulation Program                |
+|    flow-launcher     | Quick file searcher and app launcher with community-made plugins |
+|      fscapture       | A powerful, lightweight, yet full-featured screen capture tool and screen video recorder |
+|       landrop        |             Drop any files to any devices on LAN             |
+|      guiscrcpy       | A simple, pluggable, graphical user interface for the fastest Android screen mirroring software, scrcpy |
+|        scrcpy        |           Display and control your Android device            |
+|       obsidian       | Powerful knowledge base that works on top of a local folder of plain text Markdown files |
+|        mqttx         |                   MQTT 5.0 Desktop Client                    |
+| librehardwaremonitor | A fork of Open Hardware Monitor, a free software that can monitor the temperature sensors, fan speeds, voltages, load and clock speeds of your computer |
+|     pgadmin4-np      |      PostgreSQL administration and development platform      |
+|        tabby         |               A terminal for a more modern age               |
+|      obs-studio      |         Video recording and live streaming software          |
+|        sharex        |      Screen capture, file sharing and productivity tool      |
+|        sigil         |                      EPUB ebook editor                       |
+|    thorium-reader    | A cross platform desktop reading app, based on the Readium Desktop toolkit |
+|       tightvnc       |        VNC-Compatible Remote Control / Remote Desktop        |
+|      vncviewer       |                Control VNC enabled computers                 |
+|       ultravnc       | UltraVNC Server and Viewer can display the screen of one computer (Server) on the screen of another (Viewer) |
+|      wireshark       | A network protocol analyzer that lets you see what’s happening on your network at a microscopic level |
+|        winscp        | Copy files between a local computer and remote servers using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols |
+|        trippy        | Trippy combines the functionality of traceroute and ping and is designed to assist with the analysis of networking issues |
+|        vysor         |                Mirror and Control your Phone                 |
+|      peerblock       |  An IP filter for Windows 7/10, forked from PeerGuardian 2   |
+|   timeseriesadmin    | Administration panel and querying interface for InfluxDB databases |
+|    syncthingtray     |                Tray application for Syncthing                |
+|      syncthing       |         Open Source Continuous File Synchronization          |
+|       snipaste       | A snipping tool, which allows you to pin the screenshot back onto the screen |
+|        rustup        |         Manage multiple rust installations with ease         |
+|       rustdesk       |   An open-source remote desktop software, written in Rust    |
+|        picgo         |                    Image uploader/manager                    |
+|      qalculate       |                   Multi-purpose calculator                   |
+|        msys2         |     A software distro and building platform for Windows      |
+|        motrix        |               A full-featured download manager               |
+| neatdownloadmanager  | A simple and lightweight GUI wrapped around a powerful and optimized Download-Engine |
+|    listen1desktop    |               One for all free music in China                |
+|        mp3tag        | Powerful and easy-to-use tool to edit metadata of audio files |
+|        pandoc        |              Pandoc filter for cross-references              |
+|        putty         | A free implementation of SSH and Telnet, along with an xterm terminal emulator |
+|      honeyview       |                     A fast image viewer                      |
