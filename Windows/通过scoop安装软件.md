@@ -93,6 +93,7 @@ set-executionpolicy remotesigned -s currentuser
 |       coretemp       |  Monitor processor temperature and other vital information   |
 |         gimp         |                GNU Image Manipulation Program                |
 |    flow-launcher     | Quick file searcher and app launcher with community-made plugins |
+|      keypirinha      |        A fast launcher for keyboard ninjas on Windows        |
 |      fscapture       | A powerful, lightweight, yet full-featured screen capture tool and screen video recorder |
 |       landrop        |             Drop any files to any devices on LAN             |
 |      guiscrcpy       | A simple, pluggable, graphical user interface for the fastest Android screen mirroring software, scrcpy |
