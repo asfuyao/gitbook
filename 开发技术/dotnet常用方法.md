@@ -122,7 +122,7 @@ CancellationTokenSource TaskCancellationToken = new CancellationTokenSource();
 var t = Task.Factory.StartNew(() => {
     //线程中要运行的代码
 });
-int Timeout = 6 * 1000;//60秒超时时间
+int Timeout = 60 * 1000;//60秒超时时间
 if (!t.Wait(Timeout, TaskCancellationToken.Token))
 {
     //线程已经超时 取消线程
