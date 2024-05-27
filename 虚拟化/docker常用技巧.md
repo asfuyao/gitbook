@@ -1,13 +1,27 @@
 <!-- TOC -->
 
+- [debian使用国内源安装docker](#debian使用国内源安装docker)
 - [1. docker常用技巧](#1-docker常用技巧)
   - [1.1. 进入容器内部](#11-进入容器内部)
   - [1.2. 安装容器管理面板](#12-安装容器管理面板)
   - [1.3. 镜像加速](#13-镜像加速)
     - [1.3.1. 编辑daemon.json文件](#131-编辑daemonjson文件)
     - [1.3.2. 重启docker](#132-重启docker)
+  - [1.4. 导出容器到镜像](#14-导出容器到镜像)
+    - [1.4.1. 将容器打包成镜像](#141-将容器打包成镜像)
+    - [1.4.2. 打包镜像](#142-打包镜像)
+    - [1.4.3. 新服务器载入镜像](#143-新服务器载入镜像)
+  - [1.5. 查看docker资源占用情况](#15-查看docker资源占用情况)
 
 <!-- /TOC -->
+
+# debian使用国内源安装docker
+
+```shell
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | sudo apt-key add -
+
+echo deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian bookworm stable > /etc/apt/sources.list.d/docker.list
+```
 
 # 1. docker常用技巧
 
