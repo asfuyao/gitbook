@@ -73,9 +73,11 @@ GitHub地址：https://github.com/codecadwallader/codemaid
 
 C#静态分析工具 ，将分析、重构和修复方法的数量提升到了 500 多个。Roslynator 使用开源的 Roslyn .NET 编译器平台对 C#代码进行静态分析。这个分析驱动 IDE 显示可以帮助你改进代码的提示和操作信息。
 
-## Codeium
+## AI代码辅助工具
 
-AI代码编写工具
+按好用的顺序排序，下面插件同样支持vscode
+
+CodeGeeX、Codeium、TONGYI Langma、Baidu Comate
 
 ## CSharpier
 
