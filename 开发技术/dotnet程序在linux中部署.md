@@ -51,9 +51,9 @@ curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_
 * 配置网站的反向代理可用127.0.0.1:端口来访问webapi服务
 * 反向代理配置时，清空匹配规则，在proxy_pass前面添加一行：rewrite /api/路径/(.*) /$1 break;
 
-# 部署在k3s中
+# 2. 部署在k3s中
 
-## 部署k3s
+## 2.1. 部署k3s
 
 部署后通过http://ip:300080访问，使用默认的用户名 admin 和密码 Kuboard123 登录
 
@@ -83,7 +83,7 @@ watch kubectl get pods -n kuboard
 
 ```
 
-## 注意事项
+## 2.2. 注意事项
 
 * webapi容器的配置文件appsettings.json中绑定端口设置不能用localhost，要用*：端口号，否则无法访问
 * 容器服务的访问可用通过ClusterIP加容器内端口
