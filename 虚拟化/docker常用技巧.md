@@ -15,6 +15,14 @@
 
 <!-- /TOC -->
 
+# 一键安装脚本
+
+```shell
+bash <(curl -sSL https://linuxmirrors.cn/docker.sh)
+```
+
+
+
 # debian使用国内源安装docker
 
 ```shell
@@ -46,7 +54,8 @@ docker run -d -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.
     "iptables": false, //在linux下设置，可以使ufw防火墙规则设置生效，否则dockers会自己添加iptables规则，ufw无法阻止
     "registry-mirrors": [
         "https://registry.docker-cn.com",
-        "http://docker.mirrors.ustc.edu.cn"
+        "http://docker.mirrors.ustc.edu.cn",
+        "https://docker.1panel.live"
     ] //设置仓库镜像
 }
 ```
