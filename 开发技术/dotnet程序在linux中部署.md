@@ -20,7 +20,10 @@ sudo firewall-cmd --reload
 
 ```shell
 # 初始化，根据实际情况修改
-sudo ACCEPT_EULA='Y' MSSQL_PID='Enterprise' MSSQL_SA_PASSWORD='P@ssw0rd' MSSQL_DATA_DIR='/uniworks/database' MSSQL_BACKUP_DIR='/uniworks/databak' MSSQL_LCID='2052' MSSQL_COLLATION='Chinese_PRC_CI_AS' TZ='Asia/Shanghai' MSSQL_AGENT_ENABLED='True' /opt/mssql/bin/mssql-conf setup
+sudo mkdir -p /mssql2019/data
+sudo mkdir -p /mssql2019/backup
+
+sudo ACCEPT_EULA='Y' MSSQL_PID='Enterprise' MSSQL_SA_PASSWORD='P@ssw0rd' MSSQL_DATA_DIR='/mssql2019/data' MSSQL_BACKUP_DIR='/mssql2019/backup' MSSQL_LCID='2052' MSSQL_COLLATION='Chinese_PRC_CI_AS' TZ='Asia/Shanghai' MSSQL_AGENT_ENABLED='True' /opt/mssql/bin/mssql-conf setup
 
 # 设置用户反馈
 sudo /opt/mssql/bin/mssql-conf set telemetry.customerfeedback false
