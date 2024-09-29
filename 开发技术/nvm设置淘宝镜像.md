@@ -5,8 +5,13 @@
 设置node
 
 ```shell
+# Windows
 nvm node_mirror https://npmmirror.com/mirrors/node/
 nvm npm_mirror https://npmmirror.com/mirrors/npm/
+
+# linux
+export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
+export NVM_IOJS_ORG_MIRROR=https://npmmirror.com/mirrors/iojs
 ```
 
 ## nvm use
