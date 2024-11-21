@@ -70,7 +70,7 @@ set-executionpolicy remotesigned -s currentuser
 
 * 3.powershell中运行：`scoop reset *`，即可恢复所有软件的图标和环境变量
 
-* 4. 很多软件的配置文件在%USERPROFILE%中，如：.ssh、.config等需要在重装系统前北方出来，重装系统后复制回去即可
+* 4. 很多软件的配置文件在%USERPROFILE%中，如：.ssh、.config等需要在重装系统前备份出来，重装系统后复制回去即可
 
 * 5. 有些软件需要导入注册表或执行初始化脚本，如：vscode要导入右键菜单注册表文件
 
