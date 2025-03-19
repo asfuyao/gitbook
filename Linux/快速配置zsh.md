@@ -101,4 +101,3 @@ alias mv="mv -i"
 alias rm="rm -i"
 alias vi="vim"
 ```
-
