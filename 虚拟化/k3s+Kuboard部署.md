@@ -99,3 +99,39 @@ kuboard-v3-645bdffbf6-sbdxb        1/1     Running   0          67s
 - 输入初始用户名和密码，并登录
   - 用户名： `admin`
   - 密码： `Kuboard123`
+
+## 配置镜像下载加速
+
+/etc/rancher/k3s/registries.yaml
+
+```yaml
+mirrors:
+  docker.io:
+    endpoint:
+      - "https://docker.xuanyuan.me" #此处可用其他加速地址替代
+```
+
+重启服务：`sudo systemctl restart k3s`
+
+## 常用操作
+
+```bash
+# 拉取镜像
+sudo k3s crictl pull <repository>/<image>:<tag>
+# 查看下载的镜像
+sudo k3s crictl images
+# 查看容器
+crictl ps
+# 查看容器详细信息
+crictl inspect <container-id>
+# 列出所有Pod
+crictl pods
+# 查看pod详细信息
+crictl inspectp <pod-id>
+# 查看日志
+crictl logs <container-id>
+# 执行命令
+crictl exec -i -t <container-id> <command>
+crictl exec -i -t <container-id> /bin/sh
+```
+
