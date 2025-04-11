@@ -11,7 +11,23 @@ sudo apt update -y
 sudo apt upgrade -y
 ```
 
-### 2. 使用国内源安装 K3s
+### 2. 安装 K3s
+
+#### 标准安装
+
+需科学上网
+
+```shell
+curl -sfL https://get.k3s.io | sh - 
+```
+
+多网卡指定主网卡
+
+```shell
+curl -sfL https://get.k3s.io | sh -s - server --flannel-iface=网卡名 --node-ip=IP地址
+```
+
+#### 国内源安装
 
 K3s 提供了一个安装脚本，可以通过设置环境变量 `INSTALL_K3S_MIRROR=cn` 来使用国内镜像源。运行以下命令安装 K3s，为了确保 K3s 使用国内镜像仓库，可以指定 `--system-default-registry` 参数。例如，使用阿里云的镜像仓库：
 
@@ -41,6 +57,9 @@ INSTALL_K3S_MIRROR=cn \
 K3S_URL=https://<master-ip>:6443 \
 K3S_TOKEN=<token> \
 sh -
+
+
+curl -sfL https://get.k3s.io | K3S_TOKEN=K10a12d951b6ff5259f7b3d60871ac4858d005bdf8f1c2b358095ed58c3f927b9a2::server:3cd2d63d57987d18e6bfae8f76cfdd53 sh -s - server --flannel-iface=enp6s19 --node-ip=192.168.1.107 --server https://192.168.1.106:6443
 ```
 
 其中 `<master-ip>` 是主节点的 IP 地址，`<token>` 是主节点的 K3s token，可以通过 `sudo cat /var/lib/rancher/k3s/server/node-token` 获取。
