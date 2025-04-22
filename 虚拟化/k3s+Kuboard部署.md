@@ -119,6 +119,16 @@ kuboard-v3-645bdffbf6-sbdxb        1/1     Running   0          67s
   - 用户名： `admin`
   - 密码： `Kuboard123`
 
+## Portainer
+
+另一个管理工具，功能比Kuboard弱，只有英文，安装后访问http://主机IP:30777
+
+```shell
+kubectl apply -n portainer -f https://downloads.portainer.io/ce-lts/portainer.yaml
+```
+
+
+
 ## 配置镜像下载加速
 
 /etc/rancher/k3s/registries.yaml
