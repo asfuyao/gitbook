@@ -59,7 +59,8 @@ K3S_TOKEN=<token> \
 sh -
 
 
-curl -sfL https://get.k3s.io | K3S_TOKEN=K10a12d951b6ff5259f7b3d60871ac4858d005bdf8f1c2b358095ed58c3f927b9a2::server:3cd2d63d57987d18e6bfae8f76cfdd53 sh -s - server --flannel-iface=enp6s19 --node-ip=192.168.1.107 --server https://192.168.1.106:6443
+ curl -sfL https://get.k3s.io | K3S_URL=https://192.168.1.106:6443 K3S_TOKEN=K10a12d951b6ff5259f7b3d60871ac4858d005bdf8f1c2b358095ed58c3f927b9a2::server:3cd2d63d57987d18e6bfae8f76cfdd53 INSTALL_K3S_EXEC="--node-ip=192.168.1.107 --flannel-iface=enp6s19" sh -
+
 ```
 
 其中 `<master-ip>` 是主节点的 IP 地址，`<token>` 是主节点的 K3s token，可以通过 `sudo cat /var/lib/rancher/k3s/server/node-token` 获取。
