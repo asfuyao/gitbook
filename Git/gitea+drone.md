@@ -83,7 +83,8 @@ docker run \
   --env=DRONE_GITEA_CLIENT_SECRET=客户端密钥 \
   --env=DRONE_RPC_SECRET=共享密钥 \
   --env=DRONE_SERVER_HOST=droneserver:8000 \
-  --env=DRONE_SERVER_PROTO=http \
+  --env=DRONE_SERVER_PROTO=http 
+  --env=DRONE_USER_CREATE=username:gitea管理员用户名,admin:true \
   --publish=8000:80 \
   --publish=8443:443 \
   --restart=always \
@@ -121,6 +122,19 @@ docker run --detach \
 
 执行命令：`docker logs drone-runner`查看是否有报错
 
+可选环境变量：
+
+```shell
+  --env=DRONE_DEBUG=true \
+  --env=DRONE_TRACE=true \
+  --env=DRONE_RPC_DUMP_HTTP=true \
+  --env=DRONE_RPC_DUMP_HTTP_BODY=true \
+  --env=DRONE_UI_USERNAME=root \
+  --env=DRONE_UI_PASSWORD=root \
+```
+
+
+
 ## 流水线测试
 
 * 进入包含.drone.yml文件的代码库
@@ -129,3 +143,77 @@ docker run --detach \
 * 在最下面可以进行测试推送
 * 点击测试推送后返回grone，进入对应的Repositories中
 * 此时应该看到测试执行的记录点击记录可以看到明细
+
+例子.drone.yml：
+
+```yaml
+kind: pipeline # 定义一个管道
+type: docker # 当前管道的类型
+name: microservice # 当前管道的名称
+
+workspace: #指定工具目录
+  base: /drone
+  path: src
+
+steps:
+  - name: maven compile
+    image: erpdev.top:20085/common/maven:3.8.6-openjdk-21.ea-b3
+    volumes:
+      - name: maven-cache
+        path: /root/.m2
+      - name: build-dir
+        path: /build
+    commands:
+      - cd /drone/src/springcloudams
+      - mvn clean package -DskipTests=true
+      - install -D gatewaty/target/gatewaty-0.0.1-SNAPSHOT.jar /build/springcloudams/gatewaty/target/gatewaty-0.0.1-SNAPSHOT.jar/app/gatewaty.jar
+      - install -D sys/target/sys-0.0.1-SNAPSHOT.jar /build/springcloudams/sys/target/sys-0.0.1-SNAPSHOT.jar
+      - install -D material/target/material-0.0.1-SNAPSHOT.jar /build/springcloudams/material/target/material-0.0.1-SNAPSHOT.jar
+      - install -D technique/target/technique-0.0.1-SNAPSHOT.jar /build/springcloudams/technique/target/technique-0.0.1-SNAPSHOT.jar
+      - cp dockerbuild.sh /build/springcloudams
+      - cp Dockerfile /build/springcloudams
+      
+  - name: vue build
+    image: erpdev.top:20085/common/node:16.20.2
+    volumes:
+      - name: node_modules
+        path: /drone/src/VuePortalProject/node_modules
+      - name: build-dir
+        path: /build
+    commands:
+      - cd /drone/src/VuePortalProject
+      - npm config set registry https://registry.npmmirror.com  # 使用国内镜像加速
+      - npm install
+      - npm run build
+      - mkdir -p /build/VuePortalProject
+      - cp -r dist /build/VuePortalProject/
+      - cp dockerbuild.sh /build/VuePortalProject
+      - cp Dockerfile /build/VuePortalProject
+      - cp nginx.conf /build/VuePortalProject
+      
+  - name: docker build
+    image: appleboy/drone-ssh
+    settings:
+      host: 192.168.1.2 # 远程连接地址
+      username: root # 远程连接账号
+      password: 
+        from_secret: ssh_password # 从Secret中读取SSH密码 在drone服务器中配置
+      port: 22 # 远程连接端口
+      command_timeout: 5m # 远程执行命令超时时间
+      script:
+        - cd /var/lib/drone/build/springcloudams
+        - sh dockerbuild.sh
+        - cd /var/lib/drone/build/VuePortalProject
+        - sh dockerbuild.sh
+volumes:
+  - name: maven-cache
+    host:
+      path: /var/lib/drone/maven
+  - name: build-dir
+    host:
+      path: /var/lib/drone/build
+  - name: node_modules
+    host:
+      path: /var/lib/drone/node_modules 
+```
+
