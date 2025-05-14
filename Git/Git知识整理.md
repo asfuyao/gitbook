@@ -1,5 +1,13 @@
 # git知识整理
 
+## 创建和推送分支
+
+```shell
+git checkout -b <your-new-branch-name> #创建并切换到新分支
+git switch -c <your-new-branch-name> #创建并切换到新分支，Git版本2.23.0或更高
+git push -u origin <your-new-branch-name> #推送本地分支到远程仓库，-u参数（或者--set-upstream）的作用是建立本地分支与远程分支的关联，这样以后只需运行git push就可以推送更新到对应的远程分支，而不需要每次都指定远程和分支名
+```
+
 ## merge分支
 
 ```shell
