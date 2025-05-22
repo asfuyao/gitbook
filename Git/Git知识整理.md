@@ -64,7 +64,7 @@ git add file3.txt
 git merge --continue
 ```
 
-## 如何同时开发多个
+## 如何同时开发多个分支
 
 ```shell
 git worktree add ../my-worktree target_branch #在当前git项目文件夹的同级目录创建一个my-feature-worktree目录指向target_branch分支
