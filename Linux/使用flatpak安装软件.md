@@ -10,8 +10,6 @@ flatpak remote-add -u --if-not-exists flathub https://dl.flathub.org/repo/flathu
 
 # 已用户模式安装软件
 flatpak install -u <remote> <package_name>
-# 例如
-flatpak install -u flathub com.github.tchx84.Flatseal # Flatpak应用权限管理软件
 
 # 搜索 Flatpak 软件包
 flatpak search <keyword>
@@ -35,5 +33,14 @@ flatpak run <package_name>
 flatpak export <package_name>
 # 导入应用程序
 flatpak install <filename>
+```
+
+# 常用软件
+
+```shell
+flatpak install flathub com.github.tchx84.Flatseal # Flatpak应用权限管理软件
+flatpak install flathub io.github.vikdevelop.SaveDesktop # 桌面备份
+flatpak install flathub com.google.Chrome
+flatpak install flathub com.apifox.Apifox
 ```
 
