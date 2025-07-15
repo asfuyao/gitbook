@@ -6,7 +6,7 @@ https://flathub.org/setup
 
 ```shell
 # 添加用户模式仓库
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add -u --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # 已用户模式安装软件
 flatpak install -u <remote> <package_name>
