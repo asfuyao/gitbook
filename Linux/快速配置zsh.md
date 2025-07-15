@@ -27,9 +27,7 @@ chsh -s /bin/zsh
 # 安装 oh my zsh
 
 	# 安装 Oh My Zsh
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	# 以上命令可能不好使，可使用如下两条命令
-	sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # zsh配置
 
@@ -80,14 +78,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 ```shell
 p10k configure
-```
-
-## Powerlevel9k 主题安装
-
-### 安装主题
-
-```shell
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 ```
 
 ### .zshrc配置文件修改
