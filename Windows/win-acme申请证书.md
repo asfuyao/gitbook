@@ -44,7 +44,7 @@ win-acme官网：https://www.win-acme.com/
 * 需要修改配置文件settings.json，将PreValidateDns对应行修改为："PreValidateDns": false
 
 ```shell
-wacs.exe --source manual --host *.域名,域名 --validation aliyun --aliyunapiid [AccessKey ID] --aliyunapisecret [AccessKey Secret] --store pemfiles --pemfilespath "存储证书文件的路径" --installation none --accepttos
+wacs.exe --target manual --host *.域名,域名 --validation aliyun --aliyunapiid [AccessKey ID] --aliyunapisecret [AccessKey Secret] --store pemfiles --pemfilespath "存储证书文件的路径" --installation none --accepttos
 ```
 
 ### 自主机验证
