@@ -40,7 +40,7 @@ CREATE TABLE conditions (
     humidity    DOUBLE PRECISION  NULL
 );
 
--- 对超级表进行分区
+--一条语句变成超表
 SELECT create_hypertable('conditions', 'time');
 --按 1 小时一个 chunk 分区
 SELECT create_hypertable('conditions', 'time', chunk_time_interval => INTERVAL '1 hour');
