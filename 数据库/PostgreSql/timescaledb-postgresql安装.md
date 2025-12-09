@@ -23,6 +23,10 @@ psql mydatabase
 
 # 在数据库中加载TimescaleDB扩展
 CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
+
+--升级小版本后报错：could not access file "$libdir/timescaledb-1.x.x"
+--执行更新即可
+ALTER EXTENSION timescaledb UPDATE;
 ```
 
 # 时序数据库功能的使用
