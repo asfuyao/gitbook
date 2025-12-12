@@ -141,6 +141,24 @@ mirrors:
       - "https://docker.xuanyuan.me" #此处可用其他加速地址替代
 ```
 
+添加私有仓库：
+
+```yaml
+mirrors:
+  "docker.io":
+    endpoint:
+      - "https://docker.xuanyuan.me"
+
+configs:
+  "erpdev.top:20085":
+    auth:
+      username: admin
+      password: P@ssw0rd
+    tls: {}
+```
+
+
+
 重启服务：`sudo systemctl restart k3s`
 
 ## 常用操作
