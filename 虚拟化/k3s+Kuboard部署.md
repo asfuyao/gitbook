@@ -35,6 +35,10 @@ K3s 提供了一个安装脚本，可以通过设置环境变量 `INSTALL_K3S_MI
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
 INSTALL_K3S_MIRROR=cn \
 sh -s - --system-default-registry=registry.cn-hangzhou.aliyuncs.com
+
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -
+# 基于docker安装，ubuntu24.04下测试只能使用docker，用contained不好用
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -s - --docker
 ```
 
 ### 3. 验证 K3s 安装
@@ -92,6 +96,19 @@ sudo systemctl restart k3s
 kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
 # 您也可以使用下面的指令，唯一的区别是，该指令使用华为云的镜像仓库替代 docker hub 分发 Kuboard 所需要的镜像
 # kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3-swr.yaml
+
+
+# 基于docker安装
+docker run -d \
+  --restart=unless-stopped \
+  --privileged \
+  --name=kuboard \
+  -p 8088:80/tcp \
+  -p 10081:10081/tcp \
+  -e KUBOARD_ENDPOINT="http://主机IP:8088" \
+  -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
+  -v /root/kuboard-data:/data \
+  eipwork/kuboard:v3
 ```
 
 如果您想要定制 Kuboard 的启动参数，请将该 YAML 文件下载到本地，并修改其中的 ConfigMap
