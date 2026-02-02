@@ -1,0 +1,21 @@
+{
+  "description": "PC-Style Paste (Shift+Insert) for JIS/PC keyboard",
+  "manipulators": [
+    {
+      "from": {
+        "key_code": "insert",
+        "modifiers": {
+          "mandatory": ["shift"],
+          "optional": ["any"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "v",
+          "modifiers": ["left_command"]
+        }
+      ],
+      "type": "basic"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "description": "PC-Style Cut (Ctrl+Del) for JIS/PC keyboard",
+  "manipulators": [
+    {
+      "from": {
+        "key_code": "delete_forward",
+        "modifiers": {
+          "mandatory": ["control"],
+          "optional": ["any"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "x",
+          "modifiers": ["left_command"]
+        }
+      ],
+      "type": "basic"
+    }
+  ]
+}
