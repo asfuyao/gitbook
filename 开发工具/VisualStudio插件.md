@@ -51,6 +51,19 @@ GitHub地址：https://github.com/codecadwallader/codemaid
 
 代码对齐，不是格式化，对其是指把代码变量或赋值等语句对齐，说不明白了用就完了
 
+## Trailing Whitespace Visualizer
+
+高亮行尾的空格，保存时自动清理
+
+## EF Core Power Tools
+
+EF Core可视化工具
+
+* 从数据库反向生成实体类
+* 查看EF Core生成的SQL
+* 可视化查看实体关系图
+* 性能分析建议
+
 ## Add New File
 
 快速新建文件，快捷键是 Shift + F2，新版VS已经自带此功能 Ctrl + Shift + A 在弹出窗口点左下角紧凑视图
